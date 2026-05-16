@@ -24,8 +24,8 @@
     <link rel="stylesheet" href="./styles.css" />
     <script>
       window.duetAdsConfig = {
-        googleAdsId: "",
-        conversionSendTo: "",
+        googleAdsId: "AW-18121635903",
+        conversionSendTo: "AW-18121635903/QbyeCM6hl6McEL_wiMFD",
       };
     </script>
     <script>
@@ -211,6 +211,10 @@
             window.gtag("event", "app_store_cta_click", clickEventParams);
             window.gtag("event", "conversion", {
               send_to: window.duetAdsConfig.conversionSendTo,
+              value: 1.0,
+              currency: "USD",
+              cta_location: clickEventParams.cta_location,
+              link_url: clickEventParams.link_url,
               event_callback: navigateToAppStore,
               event_timeout: 800,
             });

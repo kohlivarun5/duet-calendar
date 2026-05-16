@@ -1,7 +1,7 @@
 # Google Credit Watch
 
 Date: May 16, 2026
-Status: Site ready; campaign draft staged; tracking still needs the Google Ads conversion destination.
+Status: Site ready; campaign draft staged; Google Ads click conversion handler configured.
 
 ## Bridge Site
 
@@ -28,12 +28,14 @@ The bridge page already has CTA click hooks for Google Ads:
 - `app_store_cta_click`
 - `conversion`
 
-Tracking is not armed yet because `index.html` still has blank Google Ads values:
+Tracking is now armed with the Google Ads website conversion action:
 
-- `googleAdsId: ""`
-- `conversionSendTo: ""`
+- `googleAdsId: "AW-18121635903"`
+- `conversionSendTo: "AW-18121635903/QbyeCM6hl6McEL_wiMFD"`
 
-Before enabling traffic, fill those values with the Google Ads tag ID and conversion destination for the website CTA conversion, then verify the live GitHub Pages URL with Google Tag Assistant.
+The conversion action is `Outbound click`, source `Website`, primary action, created April 26, 2026. The event snippet from Google Ads uses `value: 1.0` and `currency: "USD"`, which the bridge CTA handler now sends on App Store clicks.
+
+Before enabling traffic, verify the live GitHub Pages URL with Google Tag Assistant or Google Ads diagnostics. Google Ads may continue to show the action as inactive until the first tagged click is received.
 
 ## Current Tooling Blockers
 
@@ -49,7 +51,7 @@ Each run should check:
 
 - Bridge site returns `200`
 - App Store campaign token is still present
-- Google Ads tracking values are no longer blank
+- Google Ads tracking values still match `AW-18121635903` and `AW-18121635903/QbyeCM6hl6McEL_wiMFD`
 - Google Ads campaign points to `https://kohlivarun5.github.io/duet-calendar/`
 - Campaign remains paused unless the user explicitly approves enabling it
 - Google Ads promotion or billing page shows whether the `$300` credit is available, pending, applied, or spent
