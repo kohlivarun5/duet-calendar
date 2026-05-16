@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duet Co-parent Calendar</title>
+    <meta
+      name="description"
+      content="Duet Co-parent Calendar helps separated parents plan custody days, holidays, handoffs, and school events on iPhone and iPad."
+    />
+    <meta property="og:title" content="Duet Co-parent Calendar" />
+    <meta
+      property="og:description"
+      content="A simple shared calendar for co-parenting schedules, holidays, handoffs, and school events."
+    />
+    <meta property="og:image" content="./assets/screenshots/hero-bridge.jpg" />
+    <meta name="theme-color" content="#f8fafc" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script>
+      window.duetAdsConfig = {
+        googleAdsId: "",
+        conversionSendTo: "",
+      };
+    </script>
+    <script>
+      if (window.duetAdsConfig.googleAdsId) {
+        var gtagScript = document.createElement("script");
+        gtagScript.async = true;
+        gtagScript.src =
+          "https://www.googletagmanager.com/gtag/js?id=" +
+          encodeURIComponent(window.duetAdsConfig.googleAdsId);
+        document.head.appendChild(gtagScript);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () {
+          window.dataLayer.push(arguments);
+        };
+        window.gtag("js", new Date());
+        window.gtag("config", window.duetAdsConfig.googleAdsId);
+      }
+    </script>
+  </head>
+  <body>
+    <header class="topbar" aria-label="Primary">
+      <a class="brand" href="#top" aria-label="Duet Co-parent Calendar home">
+        <img
+          src="./assets/icons/app-icon.png"
+          alt=""
+          class="brand-icon"
+          width="48"
+          height="48"
+        />
+        <span>
+          <strong>Duet</strong>
+          <small>Co-parent Calendar</small>
+        </span>
+      </a>
+      <a
+        class="button install-button js-app-store-link"
+        href="https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&ct=duet_calendar_site_20260516&mt=8"
+        data-cta-location="topbar"
+        >Get the app</a
+      >
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title">
+            <span>Peaceful.</span>
+            <span>Simple.</span>
+            <span>Shared.</span>
+          </h1>
+          <p class="lede">
+            Co-parenting, simplified. Keep parenting days, holidays, handoffs, and
+            school events in one shared iPhone calendar.
+          </p>
+          <div class="cta-stack" aria-label="Download Duet">
+            <a
+              class="hero-cta-link js-app-store-link"
+              href="https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&ct=duet_calendar_site_20260516&mt=8"
+              data-cta-location="hero"
+              aria-label="Download Duet on the App Store"
+            >
+              <span class="app-store-button">
+                <img
+                  class="app-store-badge"
+                  src="./assets/badges/download-on-the-app-store.svg"
+                  alt="Download on the App Store"
+                  width="120"
+                  height="40"
+                />
+              </span>
+              <span class="free-label">Free on the App Store</span>
+            </a
+            >
+          </div>
+        </div>
+
+        <div class="ad-visual" aria-label="Duet calendar app preview">
+          <img
+            src="./assets/screenshots/hero-bridge.jpg"
+            alt="Duet Co-parent Calendar App Store ad visual"
+          />
+        </div>
+      </section>
+
+      <section class="value-band" aria-label="What Duet helps with">
+        <article>
+          <strong>Know whose day it is</strong>
+          <p>Build a clear parenting schedule and keep both homes aligned.</p>
+        </article>
+        <article>
+          <strong>Plan holidays together</strong>
+          <p>Assign holidays and school breaks without losing the regular rhythm.</p>
+        </article>
+        <article>
+          <strong>Reduce schedule texts</strong>
+          <p>Use one shared calendar for handoffs, activities, and changes.</p>
+        </article>
+      </section>
+
+      <section class="screens" id="screens" aria-labelledby="screens-title">
+        <div class="section-heading">
+          <p class="eyebrow">Product preview</p>
+          <h2 id="screens-title">Built for modern co-parenting logistics</h2>
+        </div>
+        <div class="shot-grid">
+          <figure class="shot">
+            <img
+              src="./assets/screenshots/calendar.png"
+              alt="Duet calendar schedule screen"
+            />
+            <figcaption>Calendar schedule</figcaption>
+          </figure>
+          <figure class="shot">
+            <img
+              src="./assets/screenshots/sync.png"
+              alt="Duet holiday planning screen"
+            />
+            <figcaption>Holiday planning</figcaption>
+          </figure>
+          <figure class="shot">
+            <img
+              src="./assets/screenshots/settings.png"
+              alt="Duet family sharing settings screen"
+            />
+            <figcaption>Private iCloud sharing</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="support" id="support" aria-labelledby="support-title">
+        <div>
+          <p class="eyebrow">Support and privacy</p>
+          <h2 id="support-title">Questions about Duet?</h2>
+        </div>
+        <div class="support-copy">
+          <p>
+            Duet uses Apple's iCloud and CloudKit for family sharing. The app does not
+            run its own account system for shared calendar data, and child photos stay
+            local on each device.
+          </p>
+          <a
+            href="mailto:kohli.varun5@gmail.com?subject=Duet%20Co-parent%20Calendar%20Support"
+            >Contact support</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Duet Co-parent Calendar</span>
+      <a href="mailto:kohli.varun5@gmail.com">Support</a>
+    </footer>
+
+    <script>
+      var appStoreLinks = document.querySelectorAll(".js-app-store-link");
+
+      appStoreLinks.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+          var destination = link.href;
+          var hasGoogleTag = typeof window.gtag === "function";
+          var didNavigate = false;
+
+          function navigateToAppStore() {
+            if (!didNavigate) {
+              didNavigate = true;
+              window.location.href = destination;
+            }
+          }
+
+          if (!hasGoogleTag) {
+            return;
+          }
+
+          event.preventDefault();
+
+          var clickEventParams = {
+            cta_location: link.dataset.ctaLocation || "unknown",
+            link_url: destination,
+            transport_type: "beacon",
+          };
+
+          if (window.duetAdsConfig.conversionSendTo) {
+            window.gtag("event", "app_store_cta_click", clickEventParams);
+            window.gtag("event", "conversion", {
+              send_to: window.duetAdsConfig.conversionSendTo,
+              event_callback: navigateToAppStore,
+              event_timeout: 800,
+            });
+          } else {
+            window.gtag("event", "app_store_cta_click", {
+              cta_location: clickEventParams.cta_location,
+              link_url: clickEventParams.link_url,
+              transport_type: clickEventParams.transport_type,
+              event_callback: navigateToAppStore,
+              event_timeout: 800,
+            });
+          }
+
+          window.setTimeout(navigateToAppStore, 900);
+        });
+      });
+    </script>
+  </body>
+</html>
