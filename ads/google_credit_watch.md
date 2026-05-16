@@ -35,6 +35,8 @@ Tracking is now armed with the Google Ads website conversion action:
 
 The conversion action is `Outbound click`, source `Website`, primary action, created April 26, 2026. The event snippet from Google Ads uses `value: 1.0` and `currency: "USD"`, which the bridge CTA handler now sends on App Store clicks.
 
+Google Ads also shows the matching global Google tag snippet for `AW-18121635903`; the bridge page loads that tag before firing the click conversion.
+
 Before enabling traffic, verify the live GitHub Pages URL with Google Tag Assistant or Google Ads diagnostics. Google Ads may continue to show the action as inactive until the first tagged click is received.
 
 ## Current Tooling Blockers
