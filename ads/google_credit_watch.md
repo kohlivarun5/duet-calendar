@@ -1,7 +1,7 @@
 # Google Credit Watch
 
 Date: May 17, 2026
-Status: Site + tracking verified; Google Ads credit/campaign + App Store attribution checks blocked (no access).
+Status: $300 Google Ads credit setup in progress; bridge site and Google tag verified in Google Ads setup.
 
 ## Bridge Site
 
@@ -17,15 +17,15 @@ Status: Site + tracking verified; Google Ads credit/campaign + App Store attribu
 - Objective: Website traffic
 - Campaign type: Search
 - Final URL: `https://kohlivarun5.github.io/duet-calendar/`
-- Status (paused/enabled): Not verified today (no Google Ads access in this run)
-- Promotion / billing credit ($300): Not verified today (no Google Ads access in this run)
+- Status (paused/enabled): Bridge campaign published previously; latest ad-review state still needs daily check.
+- Promotion / billing credit ($300): Offer setup opened from the $300 email and pointed to the bridge site. Credit still requires the first eligible same-device conversion from an active Search or Shopping campaign.
 
 ## Tracking
 
 Tracking appears armed in `index.html`:
 
 - `googleAdsId: "AW-18121635903"`
-- `conversionSendTo: "AW-18121635903/QbyeCM6hl6McEL_wiMFD"`
+- `conversionSendTo: "AW-18121635903/ryb_CJ2c2a4cEL_wiMFD"`
 
 If either value ever differs or is missing, treat tracking as not armed and block enabling spend.
 
@@ -33,10 +33,10 @@ If either value ever differs or is missing, treat tracking as not armed and bloc
 
 - Campaign token `duet_calendar_site_20260516` attributed downloads: Not verified today (no App Store Connect access in this run)
 
-## Blockers
+## Current Credit Requirements
 
-- Google Ads verification blocked today:
-  - Adspirer tool quota exhausted until May 31, 2026.
-  - Google Ads API tool is limited to test accounts (developer token not approved for non-test accounts).
-- Need Google Ads UI access to verify campaign state + $300 credit status.
+- Finish the Google Ads conversion setup wizard after the bridge code is live.
+- Wait for the bridge Search campaign ad to be approved and active.
+- Get one real same-device conversion from the active campaign. Do not self-click the live ad.
+- After the first eligible conversion, watch Gmail for the $300 coupon-code email. Google says this can take up to 15 business days.
 - Need App Store Connect access to verify attributed downloads for `duet_calendar_site_20260516`.
