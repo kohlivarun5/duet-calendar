@@ -1,7 +1,7 @@
 # Google Credit Watch
 
 Date: May 17, 2026
-Status: $300 Google Ads credit setup in progress; bridge site and Google tag verified in Google Ads setup.
+Status: $300 Google Ads conversion setup completed; bridge site and Google tag verified in Google Ads setup.
 
 ## Bridge Site
 
@@ -17,8 +17,8 @@ Status: $300 Google Ads credit setup in progress; bridge site and Google tag ver
 - Objective: Website traffic
 - Campaign type: Search
 - Final URL: `https://kohlivarun5.github.io/duet-calendar/`
-- Status (paused/enabled): Bridge campaign published previously; latest ad-review state still needs daily check.
-- Promotion / billing credit ($300): Offer setup opened from the $300 email and pointed to the bridge site. Credit still requires the first eligible same-device conversion from an active Search or Shopping campaign.
+- Status (paused/enabled): Needs next live UI/API verification. The stale draft screen returned `DRAFT_SYNCHRONOUS_PROMOTE_ERROR_INVALID_DRAFT_STATUS` when publish was retried, so use the live campaign overview/list rather than the old draft tab for the next check.
+- Promotion / billing credit ($300): Offer setup opened from the $300 email, pointed to the bridge site, and completed with a new website conversion action. Credit still requires the first eligible same-device conversion from an active Search or Shopping campaign.
 
 ## Tracking
 
@@ -35,7 +35,7 @@ If either value ever differs or is missing, treat tracking as not armed and bloc
 
 ## Current Credit Requirements
 
-- Finish the Google Ads conversion setup wizard after the bridge code is live.
+- Confirm the bridge Search campaign is enabled and ads are approved/serving from the live campaign list, not the stale draft tab.
 - Wait for the bridge Search campaign ad to be approved and active.
 - Get one real same-device conversion from the active campaign. Do not self-click the live ad.
 - After the first eligible conversion, watch Gmail for the $300 coupon-code email. Google says this can take up to 15 business days.
