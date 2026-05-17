@@ -1,7 +1,7 @@
 # Google Credit Watch
 
 Date: May 17, 2026
-Status: Site + tracking verified; credit/campaign/attribution checks pending access.
+Status: Site + tracking verified; Google Ads credit/campaign + App Store attribution checks blocked (no access).
 
 ## Bridge Site
 
@@ -35,5 +35,8 @@ If either value ever differs or is missing, treat tracking as not armed and bloc
 
 ## Blockers
 
+- Google Ads verification blocked today:
+  - Adspirer tool quota exhausted until May 31, 2026.
+  - Google Ads API tool is limited to test accounts (developer token not approved for non-test accounts).
 - Need Google Ads UI access to verify campaign state + $300 credit status.
 - Need App Store Connect access to verify attributed downloads for `duet_calendar_site_20260516`.
