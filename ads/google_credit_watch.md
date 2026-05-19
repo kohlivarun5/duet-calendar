@@ -1,7 +1,7 @@
 # Google Credit Watch
 
 Date: May 19, 2026
-Status: Bridge site OK (200 + token link present), but tracking is NOT armed (conversionSendTo mismatch). Do not enable spend until fixed.
+Status: Bridge site OK (200 + token link present). Tracking config fixed in repo; push + confirm live deploy before enabling spend.
 
 ## Bridge Site
 
@@ -22,11 +22,10 @@ Status: Bridge site OK (200 + token link present), but tracking is NOT armed (co
 
 ## Tracking
 
-Tracking is NOT armed in `index.html` (treat as blocker until fixed):
+Tracking config in `index.html`:
 
 - `googleAdsId: "AW-18121635903"`
-- Expected `conversionSendTo: "AW-18121635903/QbyeCM6hl6McEL_wiMFD"`
-- Actual `conversionSendTo: "AW-18121635903/ryb_CJ2c2a4cEL_wiMFD"`
+- `conversionSendTo: "AW-18121635903/QbyeCM6hl6McEL_wiMFD"`
 
 If either value ever differs or is missing, treat tracking as not armed and block enabling spend.
 
@@ -36,7 +35,7 @@ If either value ever differs or is missing, treat tracking as not armed and bloc
 
 ## Current Credit Requirements
 
-- Fix `conversionSendTo` in the bridge site to `AW-18121635903/QbyeCM6hl6McEL_wiMFD`, redeploy GitHub Pages, then re-check the live HTML.
+- Confirm GitHub Pages has redeployed and the live HTML contains `conversionSendTo: "AW-18121635903/QbyeCM6hl6McEL_wiMFD"`.
 - Confirm the bridge Search campaign is enabled and ads are approved/serving from the live campaign list (not the stale draft tab).
 - Get one real same-device conversion from the active campaign (do not self-click the live ad).
 - After the first eligible conversion, watch Gmail for the $300 coupon-code email (Google says up to 15 business days).
