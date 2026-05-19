@@ -1,7 +1,7 @@
 # Google Credit Watch
 
 Date: May 19, 2026
-Status: Bridge site OK (200 + token link present). Tracking config fixed in repo; push + confirm live deploy before enabling spend.
+Status: Bridge site OK (200 + token link present). Tracking is armed (live HTML contains expected conversionSendTo). Do not enable spend without explicit confirmation.
 
 ## Bridge Site
 
@@ -35,7 +35,7 @@ If either value ever differs or is missing, treat tracking as not armed and bloc
 
 ## Current Credit Requirements
 
-- Confirm GitHub Pages has redeployed and the live HTML contains `conversionSendTo: "AW-18121635903/QbyeCM6hl6McEL_wiMFD"`.
+- Verified live HTML contains `conversionSendTo: "AW-18121635903/QbyeCM6hl6McEL_wiMFD"`.
 - Confirm the bridge Search campaign is enabled and ads are approved/serving from the live campaign list (not the stale draft tab).
 - Get one real same-device conversion from the active campaign (do not self-click the live ad).
 - After the first eligible conversion, watch Gmail for the $300 coupon-code email (Google says up to 15 business days).
