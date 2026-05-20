@@ -1,7 +1,7 @@
 # Google Credit Watch
 
 Date: May 20, 2026
-Status: Bridge site OK + tracking armed. Google Ads campaign enabled; ad creative and keywords improved. Promotions last verified as a $500 credit in Processing (no $300 credit visible).
+Status: Bridge site OK (verified 2026-05-20 13:03Z) + tracking armed (local). Google Ads campaign status not re-verified in this run. Promotions last verified as a $500 credit in Processing (no $300 credit visible).
 
 ## Bridge Site
 
@@ -9,6 +9,7 @@ Status: Bridge site OK + tracking armed. Google Ads campaign enabled; ad creativ
 - GitHub Pages status: serving `200`
 - App Store campaign token: `duet_calendar_site_20260516` (present in App Store link `ct=` param)
 - App Store URL: `https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&ct=duet_calendar_site_20260516&mt=8`
+- Last verified (this run): `2026-05-20 13:03Z`
 
 ## Google Ads Campaign
 
@@ -18,7 +19,7 @@ Status: Bridge site OK + tracking armed. Google Ads campaign enabled; ad creativ
 - Campaign type: Search
 - Final URL: `https://kohlivarun5.github.io/duet-calendar/`
 - Status (paused/enabled): Enabled (verified in Google Ads UI).
-- Promotion / billing credit: Promotions page shows `Get $500.00 credit for spending $500.00 on Google Ads` with status `Processing` (“You've met the criteria for this credit. It should be applied to your account soon.”). No $300 credit is visible today.
+- Promotion / billing credit: Promotions page shows `Get $500.00 credit for spending $500.00 on Google Ads` with status `Processing` (“You've met the criteria for this credit. It should be applied to your account soon.”). No $300 credit was visible as of `2026-05-20 02:04Z`.
 - Ad quality work (May 20): responsive search ad expanded with 6 additional headlines and 2 additional descriptions. Ad strength is now `Pending` while Google re-reviews the edited assets.
 - Keyword work (May 20): added missing high-intent phrase/exact keywords for parenting schedule app, custody schedule app, co-parent app, and shared calendar for co-parents. Some new exact/low-volume terms are `Pending` or `Not eligible: Low search volume`.
 
