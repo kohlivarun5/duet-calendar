@@ -1,7 +1,7 @@
 # Google Credit Watch
 
-Date: May 19, 2026
-Status: Bridge site OK + tracking armed. Google Ads access verified; campaign enabled. Promotions shows a $500 credit in Processing (no $300 credit visible).
+Date: May 20, 2026
+Status: Bridge site OK + tracking armed. Google Ads campaign enabled; ad creative and keywords improved. Promotions last verified as a $500 credit in Processing (no $300 credit visible).
 
 ## Bridge Site
 
@@ -19,6 +19,8 @@ Status: Bridge site OK + tracking armed. Google Ads access verified; campaign en
 - Final URL: `https://kohlivarun5.github.io/duet-calendar/`
 - Status (paused/enabled): Enabled (verified in Google Ads UI).
 - Promotion / billing credit: Promotions page shows `Get $500.00 credit for spending $500.00 on Google Ads` with status `Processing` (“You've met the criteria for this credit. It should be applied to your account soon.”). No $300 credit is visible today.
+- Ad quality work (May 20): responsive search ad expanded with 6 additional headlines and 2 additional descriptions. Ad strength is now `Pending` while Google re-reviews the edited assets.
+- Keyword work (May 20): added missing high-intent phrase/exact keywords for parenting schedule app, custody schedule app, co-parent app, and shared calendar for co-parents. Some new exact/low-volume terms are `Pending` or `Not eligible: Low search volume`.
 
 ## Tracking
 
@@ -36,7 +38,7 @@ If either value ever differs or is missing, treat tracking as not armed and bloc
 ## Current Credit Requirements
 
 - Verified live HTML contains `conversionSendTo: "AW-18121635903/QbyeCM6hl6McEL_wiMFD"`.
-- Confirm the bridge Search campaign is enabled and ads are approved/serving from the live campaign list (not the stale draft tab).
+- Confirm edited ad assets finish review and Ad strength resolves from `Pending`.
 - Get one real same-device conversion from the active campaign (do not self-click the live ad).
 - Watch Promotions for the credit to move from `Processing` to applied/available (and watch Gmail for any related confirmation).
 - Need App Store Connect access to verify attributed downloads for `duet_calendar_site_20260516`.
