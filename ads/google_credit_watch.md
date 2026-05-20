@@ -1,7 +1,7 @@
 # Google Credit Watch
 
 Date: May 20, 2026
-Status: Bridge site OK (verified 2026-05-20 13:03Z) + tracking armed (local). Google Ads campaign status not re-verified in this run. Promotions last verified as a $500 credit in Processing (no $300 credit visible).
+Status: Bridge site OK (verified 2026-05-20 13:02Z) + tracking armed (local). Google Ads campaign is Enabled (Search) and final URL is the bridge site. Promotions page shows no active credits/offers (no $300 credit visible).
 
 ## Bridge Site
 
@@ -19,7 +19,7 @@ Status: Bridge site OK (verified 2026-05-20 13:03Z) + tracking armed (local). Go
 - Campaign type: Search
 - Final URL: `https://kohlivarun5.github.io/duet-calendar/`
 - Status (paused/enabled): Enabled (verified in Google Ads UI).
-- Promotion / billing credit: Promotions page shows `Get $500.00 credit for spending $500.00 on Google Ads` with status `Processing` (“You've met the criteria for this credit. It should be applied to your account soon.”). No $300 credit was visible as of `2026-05-20 02:04Z`.
+- Promotion / billing credit: Promotions page has no rows/active offers visible as of `2026-05-20 13:10Z` (no $300 credit visible).
 - Ad quality work (May 20): responsive search ad expanded with 6 additional headlines and 2 additional descriptions. Ad strength is now `Pending` while Google re-reviews the edited assets.
 - Keyword work (May 20): added missing high-intent phrase/exact keywords for parenting schedule app, custody schedule app, co-parent app, and shared calendar for co-parents. Some new exact/low-volume terms are `Pending` or `Not eligible: Low search volume`.
 
