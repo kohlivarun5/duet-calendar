@@ -1,7 +1,7 @@
 # Google Credit Watch
 
 Date: May 19, 2026
-Status: Bridge site OK (200 + token link present). Tracking is armed (live HTML contains expected conversionSendTo). Do not enable spend without explicit confirmation.
+Status: Bridge site OK + tracking armed. Google Ads access verified; campaign enabled. Promotions shows a $500 credit in Processing (no $300 credit visible).
 
 ## Bridge Site
 
@@ -17,8 +17,8 @@ Status: Bridge site OK (200 + token link present). Tracking is armed (live HTML 
 - Objective: Website traffic
 - Campaign type: Search
 - Final URL: `https://kohlivarun5.github.io/duet-calendar/`
-- Status (paused/enabled): Needs next live UI/API verification. The stale draft screen returned `DRAFT_SYNCHRONOUS_PROMOTE_ERROR_INVALID_DRAFT_STATUS` when publish was retried, so use the live campaign overview/list rather than the old draft tab for the next check.
-- Promotion / billing credit ($300): Offer setup opened from the $300 email, pointed to the bridge site, and completed with a new website conversion action. Credit still requires the first eligible same-device conversion from an active Search or Shopping campaign.
+- Status (paused/enabled): Enabled (verified in Google Ads UI).
+- Promotion / billing credit: Promotions page shows `Get $500.00 credit for spending $500.00 on Google Ads` with status `Processing` (“You've met the criteria for this credit. It should be applied to your account soon.”). No $300 credit is visible today.
 
 ## Tracking
 
@@ -38,5 +38,5 @@ If either value ever differs or is missing, treat tracking as not armed and bloc
 - Verified live HTML contains `conversionSendTo: "AW-18121635903/QbyeCM6hl6McEL_wiMFD"`.
 - Confirm the bridge Search campaign is enabled and ads are approved/serving from the live campaign list (not the stale draft tab).
 - Get one real same-device conversion from the active campaign (do not self-click the live ad).
-- After the first eligible conversion, watch Gmail for the $300 coupon-code email (Google says up to 15 business days).
+- Watch Promotions for the credit to move from `Processing` to applied/available (and watch Gmail for any related confirmation).
 - Need App Store Connect access to verify attributed downloads for `duet_calendar_site_20260516`.
