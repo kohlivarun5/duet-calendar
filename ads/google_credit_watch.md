@@ -1,7 +1,7 @@
 # Google Credit Watch
 
-Date: May 21, 2026
-Status: Bridge site OK (verified 2026-05-22 01:47Z) + tracking armed (local). Google Ads campaign/credit not re-verified today (tool/UI access blocked); last known promo state: no $300 credit visible (5/20 UI).
+Date: May 22, 2026
+Status: Bridge site OK (verified 2026-05-22 15:38Z) + tracking ARMED (local + live HTML). Google Ads campaign/credit not verified today (Adspirer quota exhausted; Google Ads API access denied); latest evidence: Google Ads email reminder for $300 credit received 2026-05-20.
 
 ## Bridge Site
 
@@ -9,7 +9,7 @@ Status: Bridge site OK (verified 2026-05-22 01:47Z) + tracking armed (local). Go
 - GitHub Pages status: serving `200`
 - App Store campaign token: `duet_calendar_site_20260516` (present in App Store link `ct=` param)
 - App Store URL: `https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&ct=duet_calendar_site_20260516&mt=8`
-- Last verified (this run): `2026-05-22 01:47Z`
+- Last verified (this run): `2026-05-22 15:38Z`
 
 ## Google Ads Campaign
 
@@ -18,8 +18,8 @@ Status: Bridge site OK (verified 2026-05-22 01:47Z) + tracking armed (local). Go
 - Objective: Website traffic
 - Campaign type: Search
 - Final URL: `https://kohlivarun5.github.io/duet-calendar/`
-- Status (paused/enabled): Not verified today (last known: Enabled in UI on `2026-05-20`).
-- Promotion / billing credit: Not verified today (last known: no $300 credit visible in UI on `2026-05-20`).
+- Status (paused/enabled): Not verified today (API permission denied; Adspirer quota exhausted).
+- Promotion / billing credit: Not verified today (API permission denied; Adspirer quota exhausted). Latest email evidence: reminder to unlock $300 credit received `2026-05-20`.
 - Ad quality work (May 20): responsive search ad expanded with 6 additional headlines and 2 additional descriptions. Ad strength is now `Pending` while Google re-reviews the edited assets.
 - Keyword work (May 20): added missing high-intent phrase/exact keywords for parenting schedule app, custody schedule app, co-parent app, and shared calendar for co-parents. Some new exact/low-volume terms are `Pending` or `Not eligible: Low search volume`.
 
@@ -38,8 +38,6 @@ If either value ever differs or is missing, treat tracking as not armed and bloc
 
 ## Current Credit Requirements
 
-- Verified live HTML contains `conversionSendTo: "AW-18121635903/QbyeCM6hl6McEL_wiMFD"`.
-- Confirm edited ad assets finish review and Ad strength resolves from `Pending`.
-- Get one real same-device conversion from the active campaign (do not self-click the live ad).
-- Watch Promotions for the credit to move from `Processing` to applied/available (and watch Gmail for any related confirmation).
-- Need App Store Connect access to verify attributed downloads for `duet_calendar_site_20260516`.
+- Tracking tag IDs verified in `index.html` and live HTML (see Bridge Site + Tracking sections).
+- Still need Google Ads UI access to confirm: (1) conversion action exists and is receiving same-device conversions, and (2) Promotions shows $300 credit as available/applied.
+- Latest external signal: Google Ads email says code can take up to 15 business days after completing setup + first conversion (email received `2026-05-20`).
