@@ -1,7 +1,7 @@
 # Google Credit Watch
 
-Date: May 22, 2026
-Status: Bridge site OK (verified 2026-05-22 15:38Z) + tracking ARMED (local + live HTML). Google Ads campaign/credit not verified today (Adspirer quota exhausted; Google Ads API access denied); latest evidence: Google Ads email reminder for $300 credit received 2026-05-20.
+Date: May 23, 2026
+Status: Bridge site OK (verified 2026-05-23 13:00Z) + tracking ARMED (local `index.html`). Google Ads campaign/credit not verified today (Adspirer quota exhausted until 2026-05-31).
 
 ## Bridge Site
 
@@ -9,7 +9,7 @@ Status: Bridge site OK (verified 2026-05-22 15:38Z) + tracking ARMED (local + li
 - GitHub Pages status: serving `200`
 - App Store campaign token: `duet_calendar_site_20260516` (present in App Store link `ct=` param)
 - App Store URL: `https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&ct=duet_calendar_site_20260516&mt=8`
-- Last verified (this run): `2026-05-22 15:38Z`
+- Last verified (this run): `2026-05-23 13:00Z`
 
 ## Google Ads Campaign
 
@@ -18,8 +18,8 @@ Status: Bridge site OK (verified 2026-05-22 15:38Z) + tracking ARMED (local + li
 - Objective: Website traffic
 - Campaign type: Search
 - Final URL: `https://kohlivarun5.github.io/duet-calendar/`
-- Status (paused/enabled): Not verified today (API permission denied; Adspirer quota exhausted).
-- Promotion / billing credit: Not verified today (API permission denied; Adspirer quota exhausted). Latest email evidence: reminder to unlock $300 credit received `2026-05-20`.
+- Status (paused/enabled): Not verified today (Adspirer quota exhausted; resets `2026-05-31`).
+- Promotion / billing credit: Not verified today (Adspirer quota exhausted; resets `2026-05-31`). Latest email evidence: reminder to unlock $300 credit received `2026-05-20`.
 - Ad quality work (May 20): responsive search ad expanded with 6 additional headlines and 2 additional descriptions. Ad strength is now `Pending` while Google re-reviews the edited assets.
 - Keyword work (May 20): added missing high-intent phrase/exact keywords for parenting schedule app, custody schedule app, co-parent app, and shared calendar for co-parents. Some new exact/low-volume terms are `Pending` or `Not eligible: Low search volume`.
 
