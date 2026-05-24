@@ -1,7 +1,7 @@
 # Google Credit Watch
 
-Date: May 23, 2026
-Status: Bridge site OK (verified 2026-05-23 13:02Z) + tracking ARMED (local `index.html` + live HTML). Google Ads campaign/credit not verified today (Adspirer quota exhausted until 2026-05-31).
+Date: May 24, 2026
+Status: Bridge site OK (verified 2026-05-24 13:03Z) + tracking ARMED (local `index.html` + live HTML). Google Ads campaign/credit not verified today (no Google Ads UI access in this run; previously noted Adspirer quota exhausted until 2026-05-31).
 
 ## Bridge Site
 
@@ -9,7 +9,7 @@ Status: Bridge site OK (verified 2026-05-23 13:02Z) + tracking ARMED (local `ind
 - GitHub Pages status: serving `200`
 - App Store campaign token: `duet_calendar_site_20260516` (present in App Store link `ct=` param)
 - App Store URL: `https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&ct=duet_calendar_site_20260516&mt=8`
-- Last verified (this run): `2026-05-23 13:02Z`
+- Last verified (this run): `2026-05-24 13:03Z`
 
 ## Google Ads Campaign
 
