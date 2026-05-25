@@ -1,7 +1,7 @@
 # Google Credit Watch
 
 Date: May 25, 2026
-Status: Bridge site OK (verified 2026-05-25 13:02Z) + tracking ARMED (local `index.html` + live HTML). Google Ads campaign/credit not verified today (no Google Ads UI access in this run; previously noted Adspirer quota exhausted until 2026-05-31).
+Status: Bridge site OK (verified 2026-05-25 13:02Z) + tracking ARMED (local `index.html` + live HTML). Google Ads promo credit: only a $500 offer is visible and is **Processing** (met criteria; “should be applied soon”). $300 credit not seen today. App Store Connect attribution not checked (login required).
 
 ## Bridge Site
 
@@ -18,8 +18,8 @@ Status: Bridge site OK (verified 2026-05-25 13:02Z) + tracking ARMED (local `ind
 - Objective: Website traffic
 - Campaign type: Search
 - Final URL: `https://kohlivarun5.github.io/duet-calendar/`
-- Status (paused/enabled): Not verified today (Adspirer quota exhausted; resets `2026-05-31`).
-- Promotion / billing credit: Not verified today (Adspirer quota exhausted; resets `2026-05-31`). Latest email evidence: reminder to unlock $300 credit received `2026-05-20`.
+- Status (paused/enabled): Not verified today (Campaigns view loaded blank in Chrome; could not confirm paused/enabled).
+- Promotion / billing credit: Promotions page shows **“Get $500.00 credit for spending $500.00 on Google Ads”** with status **Processing** (“You've met the criteria for this credit. It should be applied to your account soon.”), redeemed **May 10, 2026**, complete requirements by **Jul 9, 2026**, credits granted `--`.
 - Ad quality work (May 20): responsive search ad expanded with 6 additional headlines and 2 additional descriptions. Ad strength is now `Pending` while Google re-reviews the edited assets.
 - Keyword work (May 20): added missing high-intent phrase/exact keywords for parenting schedule app, custody schedule app, co-parent app, and shared calendar for co-parents. Some new exact/low-volume terms are `Pending` or `Not eligible: Low search volume`.
 
@@ -39,5 +39,5 @@ If either value ever differs or is missing, treat tracking as not armed and bloc
 ## Current Credit Requirements
 
 - Tracking tag IDs verified in `index.html` and live HTML (see Bridge Site + Tracking sections).
-- Still need Google Ads UI access to confirm: (1) conversion action exists and is receiving same-device conversions, and (2) Promotions shows $300 credit as available/applied.
+- Still need Google Ads UI confirmation for: (1) campaign `DUET_SEARCH_BRIDGE_CTA_2026_05` current state + conversion action receiving same-device conversions, and (2) Promotions showing the **$300** credit as available/applied (not visible today; $500 offer is Processing).
 - Latest external signal: Google Ads email says code can take up to 15 business days after completing setup + first conversion (email received `2026-05-20`).
