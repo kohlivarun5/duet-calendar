@@ -1,7 +1,7 @@
 # Google Credit Watch
 
-Date: May 26, 2026
-Status: Bridge site OK (verified 2026-05-26 13:01Z) + tracking ARMED (local `index.html`). Google Ads + App Store Connect not checked in this run (login required); last observed 2026-05-25: only a $500 offer visible and **Processing**; $300 credit not seen.
+Date: May 27, 2026
+Status: Bridge site OK (verified 2026-05-27 13:02Z) + tracking ARMED (local `index.html`). Google Ads + App Store Connect not checked in this run (login required); last observed 2026-05-25: only a $500 offer visible and **Processing**; $300 credit not seen.
 
 ## Bridge Site
 
@@ -9,7 +9,7 @@ Status: Bridge site OK (verified 2026-05-26 13:01Z) + tracking ARMED (local `ind
 - GitHub Pages status: serving `200`
 - App Store campaign token: `duet_calendar_site_20260516` (present in App Store link `ct=` param)
 - App Store URL: `https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&ct=duet_calendar_site_20260516&mt=8`
-- Last verified (this run): `2026-05-26 13:01Z`
+- Last verified (this run): `2026-05-27 13:02Z`
 
 ## Google Ads Campaign
 
