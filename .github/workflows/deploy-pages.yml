@@ -6,8 +6,11 @@ on:
       - main
     paths:
       - .github/workflows/deploy-pages.yml
+      - "**/*.html"
+      - "**/*.xml"
+      - "**/*.txt"
       - assets/**
-      - index.html
+      - ads/**
       - styles.css
   workflow_dispatch:
 

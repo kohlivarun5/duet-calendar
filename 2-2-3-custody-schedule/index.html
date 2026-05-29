@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2-2-3 Custody Schedule | Calendar Calculator</title>
+    <meta
+      name="description"
+      content="Preview a 2-2-3 custody schedule, count monthly overnights, export a printable PDF, and save the parenting calendar in Duet."
+    />
+    <link rel="canonical" href="https://kohlivarun5.github.io/duet-calendar/2-2-3-custody-schedule/" />
+    <meta property="og:title" content="2-2-3 Custody Schedule Calculator" />
+    <meta property="og:description" content="See how a 2-2-3 parenting schedule looks in a real month." />
+    <meta property="og:image" content="../assets/screenshots/hero-bridge.jpg" />
+    <meta name="theme-color" content="#f8fafc" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      window.duetAdsConfig = { googleAdsId: "AW-18121635903", conversionSendTo: "AW-18121635903/QbyeCM6hl6McEL_wiMFD" };
+    </script>
+    <script>
+      if (window.duetAdsConfig.googleAdsId && !/^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) { var gtagScript = document.createElement("script"); gtagScript.async = true; gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(window.duetAdsConfig.googleAdsId); document.head.appendChild(gtagScript); window.dataLayer = window.dataLayer || []; window.gtag = function () { window.dataLayer.push(arguments); }; window.gtag("js", new Date()); window.gtag("config", window.duetAdsConfig.googleAdsId); }
+    </script>
+  </head>
+  <body class="calculator-page" data-page-slug="2-2-3-custody-schedule">
+    <header class="topbar" aria-label="Primary">
+      <a class="brand" href="../" aria-label="Duet Co-parent Calendar home">
+        <img src="../assets/icons/app-icon.png" alt="" class="brand-icon" width="48" height="48" />
+        <span><strong>Duet</strong><small>Co-parent Calendar</small></span>
+      </a>
+      <nav class="topbar-actions" aria-label="Site">
+        <a class="secondary-link" href="../custody-schedule-calculator/">Calculator</a>
+        <a class="button install-button js-app-store-link" href="https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&amp;ct=duet_calendar_site_20260516&amp;mt=8" data-cta-location="223-topbar">Get the app</a>
+      </nav>
+    </header>
+    <main>
+      <section class="calculator-hero" aria-labelledby="page-title">
+        <div class="calculator-copy">
+          <p class="eyebrow">2-2-3 custody schedule</p>
+          <h1 id="page-title">Preview a 2-2-3 month</h1>
+          <p class="lede">A 2-2-3 schedule gives one parent two overnights, the other parent two overnights, then a three-night weekend that alternates each week.</p>
+        </div>
+        <section class="calculator-shell" data-custody-calculator aria-labelledby="calculator-title">
+          <h2 id="calculator-title">2-2-3 calculator</h2>
+          <form class="calculator-form">
+            <label class="full-width">Schedule type<select name="scheduleType"><option value="2-2-3" selected>2-2-3 custody schedule</option><option value="2-2-5-5">2-2-5-5 custody schedule</option><option value="3-4-4-3">3-4-4-3 custody schedule</option><option value="week-on-week-off">Week on / week off</option><option value="alternating-weekends">Alternating weekends</option></select></label>
+            <label>Start date<input type="date" name="startDate" /></label>
+            <label>Transition time<input type="text" name="transitionTime" value="6:00 PM" /></label>
+            <label>First parent<input type="text" name="parentA" value="Parent A" /></label>
+            <label>Second parent<input type="text" name="parentB" value="Parent B" /></label>
+            <label class="full-width">Child name optional<input type="text" name="childName" placeholder="Child name" /></label>
+            <button class="button full-width" type="submit">Generate schedule</button>
+          </form>
+          <p class="calculator-template-description"></p>
+          <div class="calculator-stats" aria-live="polite"></div>
+          <div class="calculator-calendar"></div>
+          <div class="calculator-actions"><button class="button outline-button js-export-pdf" type="button">Download PDF</button><a class="button js-app-store-link" href="https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&amp;ct=duet_calendar_site_20260516&amp;mt=8" data-cta-location="223-result">Save this in Duet</a></div>
+        </section>
+      </section>
+      <section class="content-panel">
+        <h2>What is a 2-2-3 custody schedule?</h2>
+        <p>The 2-2-3 rotation is a common 50/50 parenting schedule because each parent sees the child every few days. It can work well for younger children or families that want frequent contact with both homes.</p>
+        <div class="content-grid">
+          <div><h2>Pros</h2><ul><li>Balanced parenting time across a two-week cycle.</li><li>No parent goes a full week without parenting time.</li><li>Weekends alternate in a predictable way.</li></ul></div>
+          <div><h2>Watchouts</h2><ul><li>More handoffs than week-on/week-off schedules.</li><li>Activities and school supplies need a clear shared calendar.</li><li>Holiday exceptions should be planned separately from the base rotation.</li></ul></div>
+        </div>
+      </section>
+      <section class="cta-panel"><div><h2>Turn the preview into a shared calendar</h2><p>Duet keeps parenting days, holidays, handoffs, and shared events visible to both homes without constant day-of texting.</p></div><a class="button js-app-store-link" href="https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&amp;ct=duet_calendar_site_20260516&amp;mt=8" data-cta-location="223-bottom">Get Duet</a></section>
+      <nav class="related-links" aria-label="Related custody schedule guides"><a href="../custody-schedule-calculator/">Custody calculator</a><a href="../50-50-custody-calendar/">50/50 custody calendar</a><a href="../alternating-weekends-custody-schedule/">Alternating weekends</a><a href="../holiday-custody-schedule/">Holiday custody schedule</a></nav>
+    </main>
+    <footer><span>Duet Co-parent Calendar</span><a href="mailto:kohli.varun5@gmail.com">Support</a></footer>
+    <script src="../assets/js/site.js"></script>
+    <script src="../assets/js/custody-calculator.js"></script>
+  </body>
+</html>

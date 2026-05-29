@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>50/50 Custody Calendar | Schedule Calculator</title>
+    <meta name="description" content="Compare common 50/50 custody calendar options like 2-2-3, 2-2-5-5, 3-4-4-3, and week on/week off." />
+    <link rel="canonical" href="https://kohlivarun5.github.io/duet-calendar/50-50-custody-calendar/" />
+    <meta property="og:title" content="50/50 Custody Calendar Calculator" />
+    <meta property="og:description" content="Build a shared custody calendar and export a printable monthly preview." />
+    <meta property="og:image" content="../assets/screenshots/hero-bridge.jpg" />
+    <meta name="theme-color" content="#f8fafc" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>window.duetAdsConfig = { googleAdsId: "AW-18121635903", conversionSendTo: "AW-18121635903/QbyeCM6hl6McEL_wiMFD" };</script>
+    <script>if (window.duetAdsConfig.googleAdsId && !/^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) { var gtagScript = document.createElement("script"); gtagScript.async = true; gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(window.duetAdsConfig.googleAdsId); document.head.appendChild(gtagScript); window.dataLayer = window.dataLayer || []; window.gtag = function () { window.dataLayer.push(arguments); }; window.gtag("js", new Date()); window.gtag("config", window.duetAdsConfig.googleAdsId); }</script>
+  </head>
+  <body class="calculator-page" data-page-slug="50-50-custody-calendar">
+    <header class="topbar" aria-label="Primary"><a class="brand" href="../" aria-label="Duet Co-parent Calendar home"><img src="../assets/icons/app-icon.png" alt="" class="brand-icon" width="48" height="48" /><span><strong>Duet</strong><small>Co-parent Calendar</small></span></a><nav class="topbar-actions" aria-label="Site"><a class="secondary-link" href="../custody-schedule-calculator/">Calculator</a><a class="button install-button js-app-store-link" href="https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&amp;ct=duet_calendar_site_20260516&amp;mt=8" data-cta-location="5050-topbar">Get the app</a></nav></header>
+    <main>
+      <section class="calculator-hero" aria-labelledby="page-title">
+        <div class="calculator-copy"><p class="eyebrow">50/50 custody calendar</p><h1 id="page-title">Compare equal-time schedules</h1><p class="lede">A 50/50 custody calendar can use several rhythms. Compare the monthly shape and overnight counts before choosing what fits school, work, and handoffs.</p></div>
+        <section class="calculator-shell" data-custody-calculator aria-labelledby="calculator-title">
+          <h2 id="calculator-title">50/50 schedule preview</h2>
+          <form class="calculator-form">
+            <label class="full-width">Schedule type<select name="scheduleType"><option value="2-2-3">2-2-3 custody schedule</option><option value="2-2-5-5" selected>2-2-5-5 custody schedule</option><option value="3-4-4-3">3-4-4-3 custody schedule</option><option value="week-on-week-off">Week on / week off</option><option value="alternating-weekends">Alternating weekends</option></select></label>
+            <label>Start date<input type="date" name="startDate" /></label><label>Transition time<input type="text" name="transitionTime" value="6:00 PM" /></label><label>First parent<input type="text" name="parentA" value="Parent A" /></label><label>Second parent<input type="text" name="parentB" value="Parent B" /></label><label class="full-width">Child name optional<input type="text" name="childName" placeholder="Child name" /></label><button class="button full-width" type="submit">Generate schedule</button>
+          </form>
+          <p class="calculator-template-description"></p><div class="calculator-stats" aria-live="polite"></div><div class="calculator-calendar"></div><div class="calculator-actions"><button class="button outline-button js-export-pdf" type="button">Download PDF</button><a class="button js-app-store-link" href="https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&amp;ct=duet_calendar_site_20260516&amp;mt=8" data-cta-location="5050-result">Save this in Duet</a></div>
+        </section>
+      </section>
+      <section class="content-panel"><h2>Common 50/50 custody calendar options</h2><p>Families often use 2-2-3, 2-2-5-5, 3-4-4-3, or week-on/week-off schedules to split parenting time evenly. The best fit depends on commute, school age, handoff tolerance, and whether fixed weekdays matter.</p><div class="content-grid"><div><h2>Pros</h2><ul><li>Both parents have substantial weekday and weekend time.</li><li>Overnights usually balance across each two-week cycle.</li><li>Several templates can match different work schedules.</li></ul></div><div><h2>Watchouts</h2><ul><li>Equal time still needs clear rules for holidays and school breaks.</li><li>Some rotations create frequent transitions.</li><li>Monthly percentages may vary slightly because months have different lengths.</li></ul></div></div></section>
+      <section class="cta-panel"><div><h2>Keep both homes aligned</h2><p>Duet is built for custody days, holidays, handoffs, and shared events, with a clean private iOS calendar experience.</p></div><a class="button js-app-store-link" href="https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&amp;ct=duet_calendar_site_20260516&amp;mt=8" data-cta-location="5050-bottom">Get Duet</a></section>
+      <nav class="related-links" aria-label="Related custody schedule guides"><a href="../custody-schedule-calculator/">Custody calculator</a><a href="../2-2-3-custody-schedule/">2-2-3 schedule</a><a href="../alternating-weekends-custody-schedule/">Alternating weekends</a><a href="../holiday-custody-schedule/">Holiday custody schedule</a></nav>
+    </main>
+    <footer><span>Duet Co-parent Calendar</span><a href="mailto:kohli.varun5@gmail.com">Support</a></footer>
+    <script src="../assets/js/site.js"></script><script src="../assets/js/custody-calculator.js"></script>
+  </body>
+</html>

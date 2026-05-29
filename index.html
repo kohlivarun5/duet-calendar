@@ -6,22 +6,56 @@
     <title>Duet Co-parent Calendar</title>
     <meta
       name="description"
-      content="Duet Co-parent Calendar helps separated parents plan custody days, holidays, handoffs, and school events on iPhone and iPad."
+      content="Duet Co-parent Calendar helps separated parents plan custody days, holidays, handoffs, iCloud sharing, Home Screen widgets, and pickup reminders on iPhone."
     />
+    <link rel="canonical" href="https://kohlivarun5.github.io/duet-calendar/" />
     <meta property="og:title" content="Duet Co-parent Calendar" />
     <meta
       property="og:description"
-      content="A simple shared calendar for co-parenting schedules, holidays, handoffs, and school events."
+      content="A simple shared calendar for co-parenting schedules, holidays, handoffs, iCloud sharing, widgets, and pickup reminders."
     />
-    <meta property="og:image" content="./assets/screenshots/hero-bridge.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kohlivarun5.github.io/duet-calendar/" />
+    <meta
+      property="og:image"
+      content="https://kohlivarun5.github.io/duet-calendar/assets/screenshots/hero-bridge.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Duet Co-parent Calendar" />
+    <meta
+      name="twitter:description"
+      content="Plan custody days, holidays, handoffs, iCloud sharing, Home Screen widgets, and pickup reminders on iPhone."
+    />
+    <meta
+      name="twitter:image"
+      content="https://kohlivarun5.github.io/duet-calendar/assets/screenshots/hero-bridge.jpg"
+    />
     <meta name="theme-color" content="#f8fafc" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Duet Co-parent Calendar",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "iOS",
+        "description": "A shared co-parenting calendar for custody days, holidays, handoffs, iCloud sharing, Home Screen widgets, and pickup reminders.",
+        "url": "https://kohlivarun5.github.io/duet-calendar/",
+        "downloadUrl": "https://apps.apple.com/app/apple-store/id6756833862",
+        "featureList": [
+          "Custody schedule calendar",
+          "Holiday and school break planning",
+          "Private iCloud sharing",
+          "Home Screen widgets",
+          "Pickup reminders and Live Activity support"
+        ],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
     <script>
       window.duetAdsConfig = {
         googleAdsId: "AW-18121635903",
@@ -29,7 +63,7 @@
       };
     </script>
     <script>
-      if (window.duetAdsConfig.googleAdsId) {
+      if (window.duetAdsConfig.googleAdsId && !/^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) {
         var gtagScript = document.createElement("script");
         gtagScript.async = true;
         gtagScript.src =
@@ -60,12 +94,15 @@
           <small>Co-parent Calendar</small>
         </span>
       </a>
-      <a
-        class="button install-button js-app-store-link"
-        href="https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&ct=duet_calendar_site_20260516&mt=8"
-        data-cta-location="topbar"
-        >Get the app</a
-      >
+      <nav class="topbar-actions" aria-label="Site">
+        <a class="secondary-link" href="./custody-schedule-calculator/">Calculator</a>
+        <a
+          class="button install-button js-app-store-link"
+          href="https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&amp;ct=duet_calendar_site_20260516&amp;mt=8"
+          data-cta-location="topbar"
+          >Get the app</a
+        >
+      </nav>
     </header>
 
     <main id="top">
@@ -77,13 +114,13 @@
             <span>Shared.</span>
           </h1>
           <p class="lede">
-            Co-parenting, simplified. Keep parenting days, holidays, handoffs, and
-            school events in one shared iPhone calendar.
+            The simple co-parent calendar for custody days, holidays, handoffs,
+            iCloud sharing, widgets, and pickup reminders on iPhone.
           </p>
           <div class="cta-stack" aria-label="Download Duet">
             <a
               class="hero-cta-link js-app-store-link"
-              href="https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&ct=duet_calendar_site_20260516&mt=8"
+              href="https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&amp;ct=duet_calendar_site_20260516&amp;mt=8"
               data-cta-location="hero"
               aria-label="Download Duet on the App Store"
             >
@@ -96,10 +133,16 @@
                   height="40"
                 />
               </span>
-              <span class="free-label">Free on the App Store</span>
+              <span class="free-label">Download on the App Store</span>
             </a
             >
           </div>
+          <p class="lede small-lede">
+            Need a schedule first?
+            <a class="text-link" href="./custody-schedule-calculator/"
+              >Try the custody schedule calculator</a
+            >.
+          </p>
         </div>
 
         <div class="ad-visual" aria-label="Duet calendar app preview">
@@ -125,6 +168,21 @@
         </article>
       </section>
 
+      <section class="feature-strip" aria-label="Duet app features">
+        <article>
+          <strong>Private iCloud sharing</strong>
+          <p>Invite the other parent with a shared calendar link and keep updates synced through iCloud.</p>
+        </article>
+        <article>
+          <strong>Home Screen widget</strong>
+          <p>See the next two weeks of custody days at a glance without opening the app.</p>
+        </article>
+        <article>
+          <strong>Pickup reminders</strong>
+          <p>Keep handoff time visible with reminders and Live Activity support when a pickup is active.</p>
+        </article>
+      </section>
+
       <section class="screens" id="screens" aria-labelledby="screens-title">
         <div class="section-heading">
           <p class="eyebrow">Product preview</p>
@@ -133,21 +191,42 @@
         <div class="shot-grid">
           <figure class="shot">
             <img
-              src="./assets/screenshots/calendar.png"
+              src="./assets/screenshots/calendar-schedule.png"
               alt="Duet calendar schedule screen"
             />
             <figcaption>Calendar schedule</figcaption>
           </figure>
           <figure class="shot">
             <img
-              src="./assets/screenshots/sync.png"
+              src="./assets/screenshots/holiday-planning.png"
               alt="Duet holiday planning screen"
             />
             <figcaption>Holiday planning</figcaption>
           </figure>
           <figure class="shot">
             <img
-              src="./assets/screenshots/settings.png"
+              src="./assets/screenshots/invite-other-parent.png"
+              alt="Duet invite sheet for sharing a co-parent calendar"
+            />
+            <figcaption>Invite the other parent</figcaption>
+          </figure>
+          <figure class="shot">
+            <img
+              src="./assets/screenshots/widget-at-a-glance.png"
+              alt="Duet Home Screen widget showing a custody schedule"
+            />
+            <figcaption>Widget at a glance</figcaption>
+          </figure>
+          <figure class="shot">
+            <img
+              src="./assets/screenshots/live-activity-pickup.png"
+              alt="Duet pickup reminder Live Activity on the Lock Screen"
+            />
+            <figcaption>Pickup Live Activity</figcaption>
+          </figure>
+          <figure class="shot">
+            <img
+              src="./assets/screenshots/icloud-sharing-settings.png"
               alt="Duet family sharing settings screen"
             />
             <figcaption>Private iCloud sharing</figcaption>
@@ -164,7 +243,8 @@
           <p>
             Duet uses Apple's iCloud and CloudKit for family sharing. The app does not
             run its own account system for shared calendar data, and child photos stay
-            local on each device.
+            local on each device. Widgets and pickup reminders use your Duet schedule
+            to keep upcoming handoffs easier to see.
           </p>
           <a
             href="mailto:kohli.varun5@gmail.com?subject=Duet%20Co-parent%20Calendar%20Support"
@@ -179,58 +259,6 @@
       <a href="mailto:kohli.varun5@gmail.com">Support</a>
     </footer>
 
-    <script>
-      var appStoreLinks = document.querySelectorAll(".js-app-store-link");
-
-      appStoreLinks.forEach(function (link) {
-        link.addEventListener("click", function (event) {
-          var destination = link.href;
-          var hasGoogleTag = typeof window.gtag === "function";
-          var didNavigate = false;
-
-          function navigateToAppStore() {
-            if (!didNavigate) {
-              didNavigate = true;
-              window.location.href = destination;
-            }
-          }
-
-          if (!hasGoogleTag) {
-            return;
-          }
-
-          event.preventDefault();
-
-          var clickEventParams = {
-            cta_location: link.dataset.ctaLocation || "unknown",
-            link_url: destination,
-            transport_type: "beacon",
-          };
-
-          if (window.duetAdsConfig.conversionSendTo) {
-            window.gtag("event", "app_store_cta_click", clickEventParams);
-            window.gtag("event", "conversion", {
-              send_to: window.duetAdsConfig.conversionSendTo,
-              value: 1.0,
-              currency: "USD",
-              cta_location: clickEventParams.cta_location,
-              link_url: clickEventParams.link_url,
-              event_callback: navigateToAppStore,
-              event_timeout: 800,
-            });
-          } else {
-            window.gtag("event", "app_store_cta_click", {
-              cta_location: clickEventParams.cta_location,
-              link_url: clickEventParams.link_url,
-              transport_type: clickEventParams.transport_type,
-              event_callback: navigateToAppStore,
-              event_timeout: 800,
-            });
-          }
-
-          window.setTimeout(navigateToAppStore, 900);
-        });
-      });
-    </script>
+    <script src="./assets/js/site.js"></script>
   </body>
 </html>
