@@ -1,7 +1,7 @@
 # Google Credit Watch
 
-Date: May 28, 2026
-Status: Bridge site OK (verified 2026-05-28 13:01Z) + tracking ARMED (local `index.html`). Google Ads + App Store Connect not checked in this run (automation lacks non-test Google Ads API access; UI login required); last observed 2026-05-25: only a $500 offer visible and **Processing**; $300 credit not seen.
+Date: May 29, 2026
+Status: Bridge site OK (verified 2026-05-29 13:02Z) + tracking ARMED (local `index.html`). Google Ads UI not checked today; last known (2026-05-28) is all visible campaigns paused and Google reports **"None of your ads are running"**. `$300` promo code redeemed; status is **Redeemed: Complete further requirements**. Existing `$500` offer remains **Processing**.
 
 ## Bridge Site
 
@@ -9,7 +9,7 @@ Status: Bridge site OK (verified 2026-05-28 13:01Z) + tracking ARMED (local `ind
 - GitHub Pages status: serving `200`
 - App Store campaign token: `duet_calendar_site_20260516` (present in App Store link `ct=` param)
 - App Store URL: `https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&ct=duet_calendar_site_20260516&mt=8`
-- Last verified (this run): `2026-05-28 13:01Z`
+- Last verified (this run): `2026-05-29 13:02Z`
 
 ## Google Ads Campaign
 
@@ -18,8 +18,8 @@ Status: Bridge site OK (verified 2026-05-28 13:01Z) + tracking ARMED (local `ind
 - Objective: Website traffic
 - Campaign type: Search
 - Final URL: `https://kohlivarun5.github.io/duet-calendar/`
-- Status (paused/enabled): Not verified today (Google Ads UI login required; API queries blocked because the current developer token is test-accounts-only).
-- Promotion / billing credit: Not verified today (Google Ads UI login required; API queries blocked because the current developer token is test-accounts-only). Last observed 2026-05-25: Promotions page shows **“Get $500.00 credit for spending $500.00 on Google Ads”** with status **Processing** (“You've met the criteria for this credit. It should be applied to your account soon.”), redeemed **May 10, 2026**, complete requirements by **Jul 9, 2026**, credits granted `--`.
+- Status (paused/enabled): Paused. Google Ads UI shows **"None of your ads are running"**.
+- Promotion / billing credit: `$300.00 credit for future ad spend` redeemed **May 28, 2026**; status **Redeemed: Complete further requirements**; credits granted `--`; credit expiration says **Once earned, use your credit within 60 days**. Existing **“Get $500.00 credit for spending $500.00 on Google Ads”** offer remains **Processing**, redeemed **May 10, 2026**, complete requirements by **Jul 9, 2026**, credits granted `--`.
 - Ad quality work (May 20): responsive search ad expanded with 6 additional headlines and 2 additional descriptions. Ad strength is now `Pending` while Google re-reviews the edited assets.
 - Keyword work (May 20): added missing high-intent phrase/exact keywords for parenting schedule app, custody schedule app, co-parent app, and shared calendar for co-parents. Some new exact/low-volume terms are `Pending` or `Not eligible: Low search volume`.
 
@@ -39,5 +39,5 @@ If either value ever differs or is missing, treat tracking as not armed and bloc
 ## Current Credit Requirements
 
 - Tracking tag IDs verified in `index.html` and live HTML (see Bridge Site + Tracking sections).
-- Still need Google Ads UI confirmation for: (1) campaign `DUET_SEARCH_BRIDGE_CTA_2026_05` current state + conversion action receiving same-device conversions, and (2) Promotions showing the **$300** credit as available/applied (not visible today; $500 offer is Processing).
-- Latest external signal: Google Ads email says code can take up to 15 business days after completing setup + first conversion (email received `2026-05-20`).
+- Still need Google Ads UI confirmation for: (1) campaign `DUET_SEARCH_BRIDGE_CTA_2026_05` conversion action receiving same-device conversions, and (2) Promotions showing the **$300** credit as fully active/applied, not only redeemed.
+- Latest external signal: Google Ads email provided the `$300` code; code was redeemed on `2026-05-28`.
