@@ -18,7 +18,7 @@ Status: Bridge site OK (verified 2026-05-30 13:02Z) + tracking ARMED (local `ind
 - Objective: Website traffic
 - Campaign type: Search
 - Final URL: `https://kohlivarun5.github.io/duet-calendar/`
-- Status (paused/enabled): Paused. Google Ads UI shows **"None of your ads are running"**.
+- Status (paused/enabled): Not verified today (last known paused as of `2026-05-28`; Google Ads UI shows **"None of your ads are running"**).
 - Promotion / billing credit: `$300.00 credit for future ad spend` redeemed **May 28, 2026**; status **Redeemed: Complete further requirements**; credits granted `--`; credit expiration says **Once earned, use your credit within 60 days**. Existing **“Get $500.00 credit for spending $500.00 on Google Ads”** offer remains **Processing**, redeemed **May 10, 2026**, complete requirements by **Jul 9, 2026**, credits granted `--`.
 - Ad quality work (May 20): responsive search ad expanded with 6 additional headlines and 2 additional descriptions. Ad strength is now `Pending` while Google re-reviews the edited assets.
 - Keyword work (May 20): added missing high-intent phrase/exact keywords for parenting schedule app, custody schedule app, co-parent app, and shared calendar for co-parents. Some new exact/low-volume terms are `Pending` or `Not eligible: Low search volume`.
@@ -39,5 +39,6 @@ If either value ever differs or is missing, treat tracking as not armed and bloc
 ## Current Credit Requirements
 
 - Tracking tag IDs verified in `index.html` and live HTML (see Bridge Site + Tracking sections).
+- Google Ads status/credit state cannot be verified via the Google Ads API from this environment (developer token limited to test accounts); requires manual Google Ads UI check.
 - Still need Google Ads UI confirmation for: (1) campaign `DUET_SEARCH_BRIDGE_CTA_2026_05` conversion action receiving same-device conversions, and (2) Promotions showing the **$300** credit as fully active/applied, not only redeemed.
 - Latest external signal: Google Ads email provided the `$300` code; code was redeemed on `2026-05-28`.
