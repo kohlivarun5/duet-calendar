@@ -1,7 +1,7 @@
 # Google Credit Watch
 
-Date: May 30, 2026
-Status: Bridge site OK (verified 2026-05-30 13:02Z) + tracking ARMED (local `index.html`). Google Ads UI not checked today; last known (2026-05-28) is all visible campaigns paused and Google reports **"None of your ads are running"**. `$300` promo code redeemed; status is **Redeemed: Complete further requirements**. Existing `$500` offer remains **Processing**.
+Date: May 31, 2026
+Status: Bridge site OK (verified 2026-05-31 13:02Z) + tracking ARMED (local `index.html`). Google Ads UI not checked today; last known (2026-05-28) is all visible campaigns paused and Google reports **"None of your ads are running"**. `$300` promo code redeemed; status is **Redeemed: Complete further requirements**. Existing `$500` offer remains **Processing**.
 
 ## Bridge Site
 
@@ -9,7 +9,7 @@ Status: Bridge site OK (verified 2026-05-30 13:02Z) + tracking ARMED (local `ind
 - GitHub Pages status: serving `200`
 - App Store campaign token: `duet_calendar_site_20260516` (present in App Store link `ct=` param)
 - App Store URL: `https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&ct=duet_calendar_site_20260516&mt=8`
-- Last verified (this run): `2026-05-30 13:02Z`
+- Last verified (this run): `2026-05-31 13:02Z`
 
 ## Google Ads Campaign
 
