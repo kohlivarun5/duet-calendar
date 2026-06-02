@@ -439,6 +439,13 @@ footer {
   font-size: 1.7rem;
 }
 
+.content-panel h1 {
+  max-width: 16ch;
+  margin-bottom: 12px;
+  font-size: 3rem;
+  line-height: 1.05;
+}
+
 .calculator-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
