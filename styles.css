@@ -250,6 +250,9 @@ h1 span {
 
 .value-band article,
 .feature-strip article,
+.release-features,
+.intent-links,
+.faq,
 .support,
 .screens {
   border: 1px solid var(--line);
@@ -269,6 +272,80 @@ h1 span {
 
 .feature-strip article {
   background: #fbfdff;
+}
+
+.release-features,
+.intent-links,
+.faq {
+  margin: 0 0 28px;
+  padding: 28px;
+  border-radius: 28px;
+}
+
+.feature-grid,
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+}
+
+.feature-grid article,
+.faq-grid article {
+  min-height: 148px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fbfdff;
+}
+
+.feature-grid strong,
+.faq-grid h3 {
+  display: block;
+  margin: 0 0 10px;
+  font-size: 1.03rem;
+  line-height: 1.25;
+}
+
+.feature-grid p,
+.faq-grid p,
+.intent-links p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.intent-links {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: 28px;
+  align-items: start;
+  background:
+    linear-gradient(135deg, rgba(33, 184, 173, 0.08), rgba(143, 93, 232, 0.08)),
+    var(--surface);
+}
+
+.intent-links h2 {
+  margin: 0 0 12px;
+  font-size: 2.1rem;
+}
+
+.intent-link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.intent-link-grid a {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1px solid rgba(8, 125, 128, 0.18);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--teal-dark);
+  font-weight: 900;
+  text-decoration: none;
 }
 
 .value-band strong,
@@ -749,7 +826,12 @@ footer {
 
   .value-band,
   .feature-strip,
+  .intent-links,
   .support {
+    grid-template-columns: 1fr;
+  }
+
+  .intent-link-grid {
     grid-template-columns: 1fr;
   }
 
@@ -896,6 +978,10 @@ footer {
 
   .ad-visual {
     justify-content: center;
+  }
+
+  .ad-visual::before {
+    inset: 5% 0 8% 10%;
   }
 
   .ad-visual img {
