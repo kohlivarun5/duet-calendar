@@ -1,12 +1,12 @@
 # Google Credit Watch
 
-Date: May 31, 2026
-Status: Bridge site OK + tracking ARMED. Credit still needs Google Ads UI confirmation.
+Date: June 10, 2026
+Status: Bridge site OK + tracking ARMED. Credit still needs Google Ads UI confirmation; Google Ads API reads are still blocked for this non-test account.
 
 ## Site Status
 
 - URL: `https://kohlivarun5.github.io/duet-calendar/`
-- HTTP: `200` (verified `2026-05-31 13:03Z`)
+- HTTP: `200` (verified `2026-06-10`)
 - App Store link present with token `duet_calendar_site_20260516`
 - App Store URL: `https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&ct=duet_calendar_site_20260516&mt=8`
 
@@ -21,7 +21,7 @@ Status: Bridge site OK + tracking ARMED. Credit still needs Google Ads UI confir
 - Account: `662-478-4803 Duet Co-parent Calendar`
 - Campaign: `DUET_SEARCH_BRIDGE_CTA_2026_05` (Search / Website traffic)
 - Final URL: `https://kohlivarun5.github.io/duet-calendar/`
-- Status (paused/enabled): Not verified today (no Google Ads UI access from this run; API blocked to non-test accounts)
+- Status (paused/enabled): Not verified today. Google Ads connector can list customer `662-478-4803`, but data reads are blocked by the current developer token / login-customer path for this non-test account.
 
 ## Promotion / Credit Status
 
@@ -35,3 +35,4 @@ Status: Bridge site OK + tracking ARMED. Credit still needs Google Ads UI confir
 ## Blockers (Exact)
 
 - Google Ads UI check needed for: campaign status + conversion action receiving events + Promotions/Billing showing `$300` credit as available/applied (not only redeemed).
+- Automation is currently `INACTIVE`, so the daily watch will not continue unless re-enabled.
