@@ -154,6 +154,10 @@ h1 span {
   display: block;
 }
 
+.hero-copy > .eyebrow {
+  margin-bottom: 18px;
+}
+
 .lede {
   max-width: 48rem;
   margin-bottom: 0;
@@ -242,6 +246,49 @@ h1 span {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
+}
+
+.plan-band {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 28px;
+  align-items: start;
+  margin: 0 0 28px;
+  padding: 28px;
+  border: 1px solid rgba(8, 125, 128, 0.2);
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(33, 184, 173, 0.1), rgba(143, 93, 232, 0.08)),
+    var(--surface);
+}
+
+.plan-copy h2 {
+  margin: 0 0 12px;
+  font-size: 2.1rem;
+}
+
+.plan-copy > p:last-child,
+.plan-points p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.plan-points {
+  display: grid;
+  gap: 12px;
+}
+
+.plan-points article {
+  padding: 16px 18px;
+  border: 1px solid rgba(8, 125, 128, 0.15);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.plan-points strong {
+  display: block;
+  margin-bottom: 6px;
 }
 
 .value-band {
@@ -826,6 +873,7 @@ footer {
 
   .value-band,
   .feature-strip,
+  .plan-band,
   .intent-links,
   .support {
     grid-template-columns: 1fr;
@@ -926,6 +974,7 @@ footer {
   .hero-copy,
   .value-band article,
   .feature-strip article,
+  .plan-band,
   .screens,
   .support,
   .calculator-copy,
@@ -1007,6 +1056,15 @@ footer {
   .feature-strip article {
     min-height: auto;
     padding: 18px;
+  }
+
+  .plan-band {
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .plan-copy h2 {
+    font-size: 1.8rem;
   }
 
   .screens,

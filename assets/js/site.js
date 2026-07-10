@@ -1,7 +1,15 @@
 (function () {
   var appStoreLinks = document.querySelectorAll(".js-app-store-link");
+  var queryParams = new URLSearchParams(window.location.search);
   var pageSlug = document.body.dataset.pageSlug || window.location.pathname.split("/").filter(Boolean).pop() || "home";
-  var campaignToken = "duet_web_" + pageSlug.replace(/[^a-z0-9]+/gi, "_").toLowerCase() + "_202607";
+  var isGooglePaid =
+    queryParams.get("utm_source") === "google" ||
+    queryParams.has("gclid") ||
+    queryParams.has("gbraid") ||
+    queryParams.has("wbraid");
+  var organicCampaignToken = "duet_web_" + pageSlug.replace(/[^a-z0-9]+/gi, "_").toLowerCase() + "_202607";
+  var campaignToken = isGooglePaid ? "duet_google_search_202607" : organicCampaignToken;
+  var trafficSource = isGooglePaid ? "google_paid" : "organic_or_direct";
   var holidayPageSlugs = ["holiday-custody-schedule", "summer-custody-schedule", "school-break-custody-schedule"];
   var schedulePageSlugs = [
     "custody-schedule-calculator",
@@ -20,10 +28,14 @@
       : "a4de00f6-f673-4e65-9ccd-a66aff48824a";
 
   appStoreLinks.forEach(function (link) {
-    var destination = new URL(link.href);
-    destination.searchParams.set("ct", campaignToken);
-    destination.searchParams.set("ppid", productPageID);
-    link.href = destination.toString();
+    try {
+      var destination = new URL(link.href);
+      destination.searchParams.set("ct", campaignToken);
+      destination.searchParams.set("ppid", productPageID);
+      link.href = destination.toString();
+    } catch (error) {
+      // Keep the original App Store destination if a malformed URL slips through.
+    }
   });
 
   function trackEvent(name, params) {
@@ -58,10 +70,13 @@
       event.preventDefault();
 
       var clickEventParams = {
+        app_store_campaign_token: campaignToken,
         cta_location: link.dataset.ctaLocation || "unknown",
         campaign_token: campaignToken,
         custom_product_page_id: productPageID,
+        landing_page: pageSlug,
         link_url: destination,
+        traffic_source: trafficSource,
         transport_type: "beacon",
       };
 
