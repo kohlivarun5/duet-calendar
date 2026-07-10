@@ -203,6 +203,59 @@
     }
   }
 
+  function applySharedState(form) {
+    var params = new URLSearchParams(window.location.search);
+    var scheduleType = params.get("schedule");
+    var startDate = params.get("start");
+    var transitionTime = params.get("time");
+
+    if (scheduleType && templates[scheduleType]) {
+      form.elements.scheduleType.value = scheduleType;
+    }
+    if (startDate && parseLocalDate(startDate)) {
+      form.elements.startDate.value = startDate;
+    }
+    if (transitionTime) {
+      form.elements.transitionTime.value = transitionTime.slice(0, 24);
+    }
+  }
+
+  function sharedScheduleUrl(state) {
+    var url = new URL(window.location.href);
+    url.search = "";
+    url.searchParams.set("schedule", state.templateKey);
+    url.searchParams.set("start", toInputDate(state.startDate));
+    url.searchParams.set("time", state.transitionTime);
+    return url;
+  }
+
+  function shareSchedule(state, button) {
+    var url = sharedScheduleUrl(state);
+    var shareData = {
+      title: state.template.label + " custody schedule",
+      text: "Preview this " + state.template.label + " parenting schedule.",
+      url: url.toString(),
+    };
+
+    if (navigator.share) {
+      navigator.share(shareData).then(function () {
+        track("schedule_shared", { schedule_type: state.templateKey, method: "web_share" });
+      }).catch(function (error) {
+        if (error && error.name !== "AbortError") {
+          track("schedule_share_failed", { schedule_type: state.templateKey, method: "web_share" });
+        }
+      });
+      return;
+    }
+
+    navigator.clipboard.writeText(url.toString()).then(function () {
+      var originalText = button.textContent;
+      button.textContent = "Link copied";
+      window.setTimeout(function () { button.textContent = originalText; }, 1800);
+      track("schedule_shared", { schedule_type: state.templateKey, method: "clipboard" });
+    });
+  }
+
   function loadPdfLibrary(callback) {
     if (window.jspdf && window.jspdf.jsPDF) {
       callback(window.jspdf.jsPDF);
@@ -312,6 +365,8 @@
     var calendarTarget = root.querySelector(".calculator-calendar");
     var statsTarget = root.querySelector(".calculator-stats");
     var pdfButton = root.querySelector(".js-export-pdf");
+    var actions = root.querySelector(".calculator-actions");
+    var shareButton = root.querySelector(".js-share-schedule");
     var hasStarted = false;
     var latestState;
     var latestMonthData;
@@ -321,6 +376,7 @@
     }
 
     var dateInput = form.querySelector('[name="startDate"]');
+    applySharedState(form);
     if (dateInput && !dateInput.value) {
       dateInput.value = toInputDate(new Date());
     }
@@ -360,6 +416,23 @@
           generateSchedule();
         }
         exportPdf(latestState, latestMonthData);
+      });
+    }
+
+    if (!shareButton && actions) {
+      shareButton = document.createElement("button");
+      shareButton.className = "button outline-button js-share-schedule";
+      shareButton.type = "button";
+      shareButton.textContent = "Share schedule";
+      actions.insertBefore(shareButton, actions.lastElementChild);
+    }
+
+    if (shareButton) {
+      shareButton.addEventListener("click", function () {
+        if (!latestState) {
+          generateSchedule({ track: false });
+        }
+        shareSchedule(latestState, shareButton);
       });
     }
 

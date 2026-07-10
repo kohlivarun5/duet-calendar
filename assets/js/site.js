@@ -1,5 +1,13 @@
 (function () {
   var appStoreLinks = document.querySelectorAll(".js-app-store-link");
+  var pageSlug = document.body.dataset.pageSlug || window.location.pathname.split("/").filter(Boolean).pop() || "home";
+  var campaignToken = "duet_web_" + pageSlug.replace(/[^a-z0-9]+/gi, "_").toLowerCase() + "_202607";
+
+  appStoreLinks.forEach(function (link) {
+    var destination = new URL(link.href);
+    destination.searchParams.set("ct", campaignToken);
+    link.href = destination.toString();
+  });
 
   function trackEvent(name, params) {
     if (typeof window.gtag !== "function") {
@@ -34,6 +42,7 @@
 
       var clickEventParams = {
         cta_location: link.dataset.ctaLocation || "unknown",
+        campaign_token: campaignToken,
         link_url: destination,
         transport_type: "beacon",
       };
