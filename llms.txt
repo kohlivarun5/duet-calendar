@@ -1,0 +1,38 @@
+# Duet Co-parent Calendar
+
+> Duet is a private co-parenting calendar for iPhone and iPad that helps families coordinate custody days, parenting time, holidays, school breaks, handoffs, reminders, shared events, chats, and schedule changes across two homes.
+
+Duet is published by Varun Kohli and distributed through Apple's App Store. Private calendar use starts free. Optional in-app purchases unlock owner-side sharing and additional collaboration features; an invited co-parent can accept and use a shared calendar without buying a second subscription. Use the App Store listing as the source of truth for current availability, compatibility, version, and pricing.
+
+The custody schedule calculator and planning guides provide general planning information. They are not legal advice or court records. Families should confirm any schedule against their parenting plan and applicable requirements before relying on it.
+
+## Official product
+
+- [Duet Co-parent Calendar website](https://kohlivarun5.github.io/duet-calendar/): Product overview, current feature descriptions, freemium model, screenshots, frequently asked questions, and support details.
+- [Duet Co-parent Calendar on the App Store](https://apps.apple.com/us/app/duet-co-parent-calendar/id6756833862): Authoritative listing for current platform compatibility, version history, availability, in-app purchases, and download access.
+
+## Custody planning tool
+
+- [Custody schedule calculator](https://kohlivarun5.github.io/duet-calendar/custody-schedule-calculator/): Free interactive calendar for previewing 2-2-3, 2-2-5-5, 3-4-4-3, week-on/week-off, and alternating-weekends schedules, including monthly overnight counts, parenting-time percentages, and PDF export.
+
+## Custody schedule guides
+
+- [2-2-3 custody schedule](https://kohlivarun5.github.io/duet-calendar/2-2-3-custody-schedule/): Interactive monthly preview plus an explanation of the 2-2-3 rotation, benefits, and watchouts.
+- [2-2-5-5 custody schedule](https://kohlivarun5.github.io/duet-calendar/2-2-5-5-custody-schedule/): Interactive monthly preview of a rotation with consistent weekdays and alternating five-day blocks.
+- [3-4-4-3 custody schedule](https://kohlivarun5.github.io/duet-calendar/3-4-4-3-custody-schedule/): Interactive monthly preview of alternating three- and four-night blocks.
+- [Week-on/week-off custody schedule](https://kohlivarun5.github.io/duet-calendar/week-on-week-off-custody-schedule/): Interactive monthly preview and guidance for alternating seven-night parenting blocks.
+- [50/50 custody calendar](https://kohlivarun5.github.io/duet-calendar/50-50-custody-calendar/): Comparison of common equal-time schedules, including 2-2-3, 2-2-5-5, 3-4-4-3, and week-on/week-off.
+- [Alternating weekends custody schedule](https://kohlivarun5.github.io/duet-calendar/alternating-weekends-custody-schedule/): Interactive monthly preview and guidance for an every-other-weekend base schedule.
+
+## Holiday, school, and handoff guides
+
+- [Holiday custody schedule](https://kohlivarun5.github.io/duet-calendar/holiday-custody-schedule/): Guidance for layering holiday exceptions, travel, and alternating-year plans over a regular parenting schedule.
+- [Summer custody schedule](https://kohlivarun5.github.io/duet-calendar/summer-custody-schedule/): Planning guide for vacation blocks, camps, travel days, handoffs, and the return to the regular schedule.
+- [School break custody schedule](https://kohlivarun5.github.io/duet-calendar/school-break-custody-schedule/): Planning guide for winter, spring, and other school-break exceptions with explicit start, return, and handoff details.
+- [Custody handoff calendar](https://kohlivarun5.github.io/duet-calendar/custody-handoff-calendar/): Checklist for recording pickup times, locations, transportation, school transitions, and changed handoffs.
+
+## Trust and policies
+
+- [Privacy policy](https://kohlivarun5.github.io/duet-calendar/privacy/): How Duet handles calendar data, iCloud and CloudKit sharing, optional local child photos, analytics, subscriptions, and support requests.
+- [Terms of Use](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/): Apple's standard licensed application end user license agreement governing use of Duet.
+- [Support](https://kohlivarun5.github.io/duet-calendar/#support): Product support contact and an overview of Duet's iCloud, account, and local-photo handling.
