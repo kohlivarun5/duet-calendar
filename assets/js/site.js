@@ -7,9 +7,18 @@
     queryParams.has("gclid") ||
     queryParams.has("gbraid") ||
     queryParams.has("wbraid");
+  var isGooglePMax = queryParams.get("utm_campaign") === "duet_google_pmax_20260807";
   var organicCampaignToken = "duet_web_" + pageSlug.replace(/[^a-z0-9]+/gi, "_").toLowerCase() + "_202607";
-  var campaignToken = isGooglePaid ? "duet_google_search_202607" : organicCampaignToken;
-  var trafficSource = isGooglePaid ? "google_paid" : "organic_or_direct";
+  var campaignToken = isGooglePMax
+    ? "duet_google_pmax_20260807"
+    : isGooglePaid
+      ? "duet_google_search_202607"
+      : organicCampaignToken;
+  var trafficSource = isGooglePMax
+    ? "google_pmax"
+    : isGooglePaid
+      ? "google_paid"
+      : "organic_or_direct";
   var holidayPageSlugs = ["holiday-custody-schedule", "summer-custody-schedule", "school-break-custody-schedule"];
   var schedulePageSlugs = [
     "custody-schedule-calculator",
