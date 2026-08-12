@@ -7,13 +7,16 @@
     queryParams.has("gclid") ||
     queryParams.has("gbraid") ||
     queryParams.has("wbraid");
-  var isGooglePMax = queryParams.get("utm_campaign") === "duet_google_pmax_20260807";
+  var inboundCampaign = queryParams.get("utm_campaign");
+  var paidCampaignTokens = {
+    duet_google_pmax_20260807: "duet_google_pmax_20260807",
+    duet_search_bridge_cta_2026_05: "duet_search_bridge_cta_2026_05",
+  };
+  var attributedPaidCampaignToken = paidCampaignTokens[inboundCampaign] || null;
+  var isGooglePMax = inboundCampaign === "duet_google_pmax_20260807";
   var organicCampaignToken = "duet_web_" + pageSlug.replace(/[^a-z0-9]+/gi, "_").toLowerCase() + "_202607";
-  var campaignToken = isGooglePMax
-    ? "duet_google_pmax_20260807"
-    : isGooglePaid
-      ? "duet_google_search_202607"
-      : organicCampaignToken;
+  var campaignToken = attributedPaidCampaignToken ||
+    (isGooglePaid ? "duet_google_search_202607" : organicCampaignToken);
   var trafficSource = isGooglePMax
     ? "google_pmax"
     : isGooglePaid
