@@ -12,7 +12,10 @@
     duet_google_pmax_20260807: "duet_google_pmax_20260807",
     duet_search_bridge_cta_2026_05: "duet_search_bridge_cta_2026_05",
   };
-  var attributedPaidCampaignToken = paidCampaignTokens[inboundCampaign] || null;
+  var attributedPaidCampaignToken = Object.prototype.hasOwnProperty.call(
+    paidCampaignTokens,
+    inboundCampaign
+  ) ? paidCampaignTokens[inboundCampaign] : null;
   var isGooglePMax = inboundCampaign === "duet_google_pmax_20260807";
   var organicCampaignToken = "duet_web_" + pageSlug.replace(/[^a-z0-9]+/gi, "_").toLowerCase() + "_202607";
   var campaignToken = attributedPaidCampaignToken ||
