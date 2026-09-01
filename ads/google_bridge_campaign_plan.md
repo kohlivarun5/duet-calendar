@@ -18,7 +18,7 @@ Create a separate Search campaign that sends traffic to the Duet bridge page, re
 - Status at creation: Paused
 - Daily budget: `$10`
 - Bidding: Maximize clicks with a tight CPC cap if available, or Manual CPC if Google Ads requires manual setup
-- Final URL: `https://kohlivarun5.github.io/duet-calendar/`
+- Final URL: `https://duetcalendar.com/`
 
 ## Conversion Action
 
