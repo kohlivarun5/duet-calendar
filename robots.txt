@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kohlivarun5.github.io/duet-calendar/sitemap.xml
+Sitemap: https://duetcalendar.com/sitemap.xml
