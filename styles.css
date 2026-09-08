@@ -1,13 +1,13 @@
 :root {
   color-scheme: light;
-  --bg: #f8fafc;
+  --bg: #f8f7f4;
   --surface: #ffffff;
   --surface-soft: #eef7f6;
-  --ink: #111827;
-  --muted: #536170;
-  --line: #dde5ec;
+  --ink: #211b2d;
+  --muted: #665e70;
+  --line: #ded9e4;
   --teal: #21b8ad;
-  --teal-dark: #087d80;
+  --teal-dark: #7445a0;
   --violet: #8f5de8;
   --gold: #f3ad3d;
   --shadow: 0 24px 72px rgba(17, 24, 39, 0.14);
@@ -48,7 +48,7 @@ a {
   justify-content: space-between;
   gap: 16px;
   padding: 12px max(18px, calc((100vw - 1120px) / 2));
-  background: rgba(248, 250, 252, 0.92);
+  background: rgba(248, 247, 244, 0.95);
   border-bottom: 1px solid rgba(221, 229, 236, 0.86);
   backdrop-filter: blur(18px);
 }
@@ -938,7 +938,7 @@ footer {
   }
 
   .install-button {
-    display: none;
+    display: inline-flex;
     min-width: 98px;
     min-height: 44px;
     padding: 0 13px;
@@ -1122,3 +1122,11 @@ footer {
     height: 72vh;
   }
 }
+
+/* Shared accessibility and current-product links for the established planning guides. */
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 100; padding: 14px 20px; border-radius: 12px; background: #fff; color: #111827; }
+.skip-link:focus { top: 12px; }
+:focus-visible { outline: 3px solid #7445a0; outline-offset: 4px; }
+.breadcrumbs { font-size: .85rem; color: var(--muted); line-height: 1.7; }
+.calculator-transfer-note { margin: 0; font-size: .82rem; line-height: 1.55; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
