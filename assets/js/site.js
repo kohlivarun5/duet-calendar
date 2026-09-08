@@ -63,6 +63,29 @@
     }
   });
 
+  // Keep paid acquisition context when a visitor explores another site page.
+  // Only the parameters used above are forwarded, and only to this same origin.
+  // No storage is needed and unrelated query data never follows the visitor.
+  var attributionKeys = ["utm_source", "utm_campaign", "gclid", "gbraid", "wbraid"];
+  if (isGooglePaid || attributedPaidCampaignToken) {
+    document.querySelectorAll("a[href]").forEach(function (link) {
+      try {
+        var target = new URL(link.href, window.location.href);
+        if (target.origin !== window.location.origin) {
+          return;
+        }
+        attributionKeys.forEach(function (key) {
+          if (queryParams.has(key) && !target.searchParams.has(key)) {
+            target.searchParams.set(key, queryParams.get(key));
+          }
+        });
+        link.href = target.toString();
+      } catch (error) {
+        // Leave non-URL actions and malformed links unchanged.
+      }
+    });
+  }
+
   function trackEvent(name, params) {
     if (typeof window.gtag !== "function") {
       return;
