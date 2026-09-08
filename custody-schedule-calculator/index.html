@@ -15,9 +15,9 @@
       property="og:description"
       content="Preview common parenting schedules, count overnights, and save the result in Duet."
     />
-    <meta property="og:image" content="../assets/screenshots/hero-bridge.jpg" />
+    <meta property="og:image" content="https://duetcalendar.com/assets/social/duet-calendar.png" />
     <meta name="theme-color" content="#f8fafc" />
-    <link rel="stylesheet" href="../styles.css?v=20260710" />
+    <link rel="stylesheet" href="../styles.css?v=20260908" />
     <script>
       window.duetAdsConfig = {
         googleAdsId: "AW-18121635903",
@@ -40,8 +40,38 @@
         window.gtag("config", window.duetAdsConfig.googleAdsId);
       }
     </script>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://duetcalendar.com/custody-schedule-calculator/" />
+    <meta property="og:site_name" content="Duet Calendar" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Duet. Two homes. One shared calendar." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Custody Schedule Calculator | Duet Co-parent Calendar" />
+    <meta name="twitter:image" content="https://duetcalendar.com/assets/social/duet-calendar.png" />
+    <link rel="icon" type="image/png" href="/assets/icons/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Duet",
+      "item": "https://duetcalendar.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Custody Schedule Calculator | Duet Co-parent Calendar",
+      "item": "https://duetcalendar.com/custody-schedule-calculator/"
+    }
+  ]
+}</script>
   </head>
   <body class="calculator-page" data-page-slug="custody-schedule-calculator">
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="topbar" aria-label="Primary">
       <a class="brand" href="../" aria-label="Duet Co-parent Calendar home">
         <img src="../assets/icons/app-icon.png" alt="" class="brand-icon" width="48" height="48" />
@@ -61,7 +91,8 @@
       </nav>
     </header>
 
-    <main>
+    <main id="main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Duet</a><span aria-hidden="true"> / </span><span>Custody Schedule Calculator</span></nav>
       <section class="calculator-hero" aria-labelledby="page-title">
         <div class="calculator-copy">
           <p class="eyebrow">Custody schedule calculator</p>
@@ -105,7 +136,8 @@
               <input type="text" name="childName" placeholder="Child name" />
             </label>
             <button class="button full-width" type="submit">Generate schedule</button>
-          </form>
+          </form><noscript><p>Enable JavaScript to generate your calendar, or read the schedule guide below.</p></noscript>
+          <p class="calculator-transfer-note">This is a planning preview. Recreate or draft your chosen rotation in Duet; the website does not automatically import it into the app.</p>
           <p class="calculator-template-description"></p>
           <div class="calculator-stats" aria-live="polite"></div>
           <div class="calculator-calendar"></div>
@@ -115,7 +147,7 @@
               class="button js-app-store-link"
               href="https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&amp;mt=8"
               data-cta-location="calculator-result"
-              >Save this in Duet</a
+              >Plan this in Duet</a
             >
           </div>
         </section>
@@ -177,13 +209,14 @@
         <a href="../school-break-custody-schedule/">School break custody</a>
         <a href="../custody-handoff-calendar/">Custody handoff calendar</a>
       </nav>
+<section class="content-panel"><p class="eyebrow">Keep the plan together</p><h2>From a schedule to everyday coordination</h2><p>Use Duet to review parenting-day changes, keep school details with tasks, and track shared costs alongside your calendar.</p><nav class="related-links" aria-label="Explore Duet features"><a href="/parenting-schedule-swaps/">Parenting schedule swaps</a><a href="/ai-family-calendar/">AI-assisted family planning</a><a href="/shared-family-calendar/">Shared family calendar</a><a href="/co-parenting-expenses/">Co-parenting expense tracking</a></nav></section>
     </main>
 
     <footer>
       <span>Duet Co-parent Calendar</span>
       <a href="mailto:support@duetcalendar.com">Support</a>
     </footer>
-    <script src="../assets/js/site.js?v=20260812"></script>
+    <script src="../assets/js/site.js?v=20260908"></script>
     <script src="../assets/js/custody-calculator.js"></script>
   </body>
 </html>

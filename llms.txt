@@ -1,6 +1,6 @@
 # Duet Co-parent Calendar
 
-> Duet is a private co-parenting calendar for iPhone and iPad that helps families coordinate custody days, parenting time, holidays, school breaks, handoffs, reminders, shared events, chats, and schedule changes across two homes.
+> Duet is a private co-parenting calendar for iPhone and iPad that helps families coordinate custody days, parenting time, holidays, school breaks, handoffs, reminders, shared events, topics, tasks, files, Smart Proposals on supported devices, Swap Requests, shared expenses, and schedule changes across two homes.
 
 Duet is published by Varun Kohli and distributed through Apple's App Store. Private calendar use starts free. Optional in-app purchases unlock owner-side sharing and additional collaboration features; an invited co-parent can accept and use a shared calendar without buying a second subscription. Use the App Store listing as the source of truth for current availability, compatibility, version, and pricing.
 
@@ -30,6 +30,13 @@ The custody schedule calculator and planning guides provide general planning inf
 - [Summer custody schedule](https://duetcalendar.com/summer-custody-schedule/): Planning guide for vacation blocks, camps, travel days, handoffs, and the return to the regular schedule.
 - [School break custody schedule](https://duetcalendar.com/school-break-custody-schedule/): Planning guide for winter, spring, and other school-break exceptions with explicit start, return, and handoff details.
 - [Custody handoff calendar](https://duetcalendar.com/custody-handoff-calendar/): Checklist for recording pickup times, locations, transportation, school transitions, and changed handoffs.
+
+## Family coordination features
+
+- [Shared expenses](https://duetcalendar.com/co-parenting-expenses/): Duet 1.18 expense tracking with equal, percentage, or share-based splits; recorded external settlements; separate support tracking; and optional alerts. Duet does not transfer money.
+- [Parenting schedule swaps](https://duetcalendar.com/parenting-schedule-swaps/): Review offered and requested dates, share proposals through Messages, or offer days without requesting dates back.
+- [AI family calendar](https://duetcalendar.com/ai-family-calendar/): Reviewable suggested events and tasks from shared information, plus Smart Proposals for parenting schedules on supported devices.
+- [Shared family calendar](https://duetcalendar.com/shared-family-calendar/): Events, holidays, topics, tasks, and files with Married and Separated modes and private iCloud sharing.
 
 ## Trust and policies
 

@@ -36,7 +36,13 @@
     "alternating-weekends-custody-schedule",
     "custody-handoff-calendar",
   ];
-  var productPageID = holidayPageSlugs.includes(pageSlug)
+  // Product pages use the current default listing; existing campaign and schedule
+  // destinations retain their dedicated custom product pages.
+  var currentProductPageSlugs = ["home", "co-parenting-expenses", "parenting-schedule-swaps", "ai-family-calendar", "shared-family-calendar"];
+  var useDefaultListing = !isGooglePaid && !attributedPaidCampaignToken && currentProductPageSlugs.includes(pageSlug);
+  var productPageID = useDefaultListing
+    ? null
+    : holidayPageSlugs.includes(pageSlug)
     ? "f5d8dd2d-228a-40c6-b74d-49815c1ca634"
     : schedulePageSlugs.includes(pageSlug)
       ? "87fdba48-108d-4ed2-8710-4772189f6bb2"
@@ -46,7 +52,11 @@
     try {
       var destination = new URL(link.href);
       destination.searchParams.set("ct", campaignToken);
-      destination.searchParams.set("ppid", productPageID);
+      if (productPageID) {
+        destination.searchParams.set("ppid", productPageID);
+      } else {
+        destination.searchParams.delete("ppid");
+      }
       link.href = destination.toString();
     } catch (error) {
       // Keep the original App Store destination if a malformed URL slips through.

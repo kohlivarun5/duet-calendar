@@ -1,0 +1,19 @@
+name: Validate website
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 scripts/validate_site.py
+      - run: node scripts/test_attribution.cjs
+      - run: node --check assets/js/site.js && node --check assets/js/custody-calculator.js
+      - run: git diff --check
