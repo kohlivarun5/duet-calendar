@@ -597,6 +597,10 @@ details p {
   max-width: 280px;
   margin: 0 auto;
 }
+.guide-hero .feature-overview-figure {
+  width: 100%;
+  max-width: 420px;
+}
 .guide-hero img {
   border-radius: 18px;
 }

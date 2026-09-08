@@ -18,6 +18,17 @@ App source: `kohlivarun5/zoey-calendar` main at `2ee60e4`, including the 1.18 de
 
 Each screenshot has 360px and 720px WebP variants at quality 83, with responsive source selection, explicit dimensions, and lazy loading below the hero. Their combined size is about 464 KB. The app icon comes from `docs/app_store_assets/creative/source/duet-app-icon-default.png`, exported at 96px, 32px, and 180px. The social card has an editable SVG source and a 1200×630 PNG for crawler compatibility.
 
+### Approved feature overview artwork
+
+The homepage and shared-family-calendar guide also use the approved “More than a calendar” artwork from app main at `909f89015f3b4b78522e24ab7f4a46dd01e26a2e` (app PR #207). These exports were read through the user-specified `050f/zoey-calendar` repository after refreshing its `origin/main` reference; its detached checkout still held the earlier screenshot set. The new release set changes image 02; the other nine images are unchanged.
+
+| Website asset | Source screenshot | Placement |
+| --- | --- | --- |
+| feature-overview-iphone | `docs/app_store_assets/screenshots/iphone-6.9-1.18-search-readable-jpeg/02-more-than-a-calendar.jpg` | Homepage hero |
+| feature-overview-ipad | `docs/app_store_assets/screenshots/ipad-12.9-1.18-search-readable-jpeg/02-more-than-a-calendar.jpg` | Shared-family-calendar hero |
+
+The approved copy and layout are preserved. The iPhone artwork has 360px and 720px WebP variants; the iPad artwork has 512px and 1024px variants. All four use quality 88 and total about 204 KB. Descriptive alt text identifies them as feature overviews, and the iPad layout uses its own intrinsic dimensions. Device support qualifications remain in the website copy. Duet 1.18 is presented as released.
+
 ## Search intent and conversion
 
 | Page | Purpose |
