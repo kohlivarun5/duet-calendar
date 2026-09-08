@@ -787,8 +787,7 @@ tbody th {
     gap: 14px;
     font-size: 0.78rem;
   }
-  .site-header nav > a[href="/#features"],
-  .site-header nav > a[href="/#guides"] {
+  .site-header nav > a.nav-discovery {
     display: none;
   }
   .cta.small {
