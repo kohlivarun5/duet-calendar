@@ -114,6 +114,24 @@ for url, page in pages.items():
                 target_url = target.split('#')[0].split('?')[0]
                 target_page = pages.get(target_url) or Page(dest)
                 require(unquote(parsed.fragment) in target_page.ids, f'{label}: broken anchor {ref}')
+# Regional alternates must be reciprocal and point to real, indexable pages.
+for url, page in pages.items():
+    alternates = [a for a in page.find('link', rel='alternate') if a.get('hreflang')]
+    if not alternates:
+        continue
+    cluster = {a['hreflang']: a.get('href') for a in alternates}
+    require(len(cluster) == len(alternates), f'{url}: duplicate hreflang')
+    require(url in cluster.values(), f'{url}: missing self alternate')
+    require('x-default' in cluster, f'{url}: missing default region')
+    for language, target in cluster.items():
+        require(target in pages, f'{url}: hreflang target is not indexed: {target}')
+        if target not in pages:
+            continue
+        other = pages[target]
+        reciprocal = {a['hreflang']: a.get('href') for a in other.find('link', rel='alternate') if a.get('hreflang')}
+        require(reciprocal == cluster, f'{url}: nonreciprocal hreflang cluster at {target}')
+        if language != 'x-default':
+            require(bool(other.find('html', lang=language)), f'{target}: language disagrees with hreflang {language}')
 require(len(titles) == len(set(titles)), 'Duplicate page titles')
 require(len(descriptions) == len(set(descriptions)), 'Duplicate descriptions')
 require('Sitemap: ' + ORIGIN + '/sitemap.xml' in (ROOT / 'robots.txt').read_text(), 'robots.txt missing sitemap')

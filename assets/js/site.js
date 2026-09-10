@@ -38,7 +38,7 @@
   ];
   // Product pages use the current default listing; existing campaign and schedule
   // destinations retain their dedicated custom product pages.
-  var currentProductPageSlugs = ["home", "co-parenting-expenses", "parenting-schedule-swaps", "ai-family-calendar", "shared-family-calendar"];
+  var currentProductPageSlugs = ["home", "co-parenting-expenses", "parenting-schedule-swaps", "ai-family-calendar", "shared-family-calendar", "regions", "canada", "uk", "ireland", "australia", "new-zealand"];
   var useDefaultListing = !isGooglePaid && !attributedPaidCampaignToken && currentProductPageSlugs.includes(pageSlug);
   var productPageID = useDefaultListing
     ? null

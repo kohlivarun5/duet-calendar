@@ -64,6 +64,21 @@ const cases = [
     paid,
   ],
 ];
+for (const slug of [
+  "regions",
+  "canada",
+  "uk",
+  "ireland",
+  "australia",
+  "new-zealand",
+]) {
+  cases.push([
+    slug,
+    "",
+    "duet_web_" + slug.replaceAll("-", "_") + "_202607",
+    null,
+  ]);
+}
 for (const [slug, query, campaign, ppid] of cases) {
   const link = {
     href: "https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&mt=8&ppid=old",
@@ -118,7 +133,7 @@ assert.equal(url.searchParams.get("ct"), "test_campaign");
 assert.equal(url.searchParams.get("ppid"), "test_page");
 assert.equal(url.searchParams.get("email"), null);
 console.log(
-  "PASS: 12 organic/paid landing scenarios and /app attribution filtering.",
+  `PASS: ${cases.length} organic/paid landing scenarios and /app attribution filtering.`,
 );
 
 // A paid visitor can explore header anchors and multiple feature pages without
@@ -200,3 +215,41 @@ for (const relative of [
 console.log(
   "PASS: paid cross-page/header navigation and all product-page App Store anchors.",
 );
+
+// Regional availability links must keep their real Apple storefront path and
+// publisher attribution; an unrelated US custom product page must not be added.
+for (const [slug, storefront] of [
+  ["canada", "ca"],
+  ["uk", "gb"],
+  ["ireland", "ie"],
+  ["australia", "au"],
+  ["new-zealand", "nz"],
+]) {
+  const html = fs.readFileSync(
+    path.join(__dirname, "..", slug, "index.html"),
+    "utf8",
+  );
+  const href = html
+    .match(/href="(https:\/\/apps\.apple\.com\/[^"]+)"/)[1]
+    .replaceAll("&amp;", "&");
+  const link = { href, dataset: {}, addEventListener() {} };
+  vm.runInNewContext(source, {
+    URL,
+    URLSearchParams,
+    document: {
+      querySelectorAll: () => [link],
+      body: { dataset: { pageSlug: slug } },
+    },
+    window: { location: { search: "", pathname: "/" + slug + "/" } },
+  });
+  const regionalURL = new URL(link.href);
+  assert.ok(regionalURL.pathname.startsWith("/" + storefront + "/"), slug);
+  assert.equal(regionalURL.searchParams.get("ppid"), null, slug);
+  assert.equal(regionalURL.searchParams.get("pt"), "96322844", slug);
+  assert.equal(
+    regionalURL.searchParams.get("ct"),
+    "duet_web_" + slug.replaceAll("-", "_") + "_202607",
+    slug,
+  );
+}
+console.log("PASS: all five regional App Store paths and attribution tokens.");
