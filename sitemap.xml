@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://duetcalendar.com/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-10</lastmod>
   </url>
   <url>
     <loc>https://duetcalendar.com/custody-schedule-calculator/</loc>
@@ -67,4 +67,10 @@
     <loc>https://duetcalendar.com/ai-family-calendar/</loc>
     <lastmod>2026-09-08</lastmod>
   </url>
+  <url><loc>https://duetcalendar.com/regions/</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://duetcalendar.com/canada/</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://duetcalendar.com/uk/</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://duetcalendar.com/ireland/</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://duetcalendar.com/australia/</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://duetcalendar.com/new-zealand/</loc><lastmod>2026-09-10</lastmod></url>
 </urlset>

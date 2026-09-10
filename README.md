@@ -23,3 +23,21 @@ Open `http://127.0.0.1:8767/`. Google tags are disabled on localhost. There is n
 - Organic homepage and feature-page CTAs open the default App Store listing. Existing paid campaigns, schedule guides, and holiday guides retain their custom product page destinations. Campaign tokens remain stable for comparison over time.
 - Every PR runs validation. A push to `main` validates and deploys the repository root via `.github/workflows/deploy-pages.yml`.
 - See [asset provenance and SEO notes](docs/website-refresh-20260908.md) for the 1.18 website refresh.
+
+## Regional discovery
+
+`/regions/` links to English guides at `/canada/`, `/uk/`, `/ireland/`,
+`/australia/`, and `/new-zealand/`. The six pages use reciprocal `hreflang`,
+self-canonicals and a regional-hub `x-default`. Keep those links consistent;
+the validator rejects orphaned pages and mismatched regional alternates.
+
+Regional pages describe upcoming distribution, because the app is currently
+US-only. On each confirmed country launch, update its visible availability,
+FAQ answer and JSON-LD answer together. Verify the public storefront and
+subscription prices before changing the CTA or pricing language. Preserve the
+existing US page, `/app` redirect and attribution tokens. Country pages use
+the default App Store product page in their own storefront for organic visits.
+
+The guides use actual occasions and local school-calendar review, not a claim
+to provide every state/province/school public-holiday calendar. Official
+holiday references are linked from each guide.
