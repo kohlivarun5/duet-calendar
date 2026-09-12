@@ -31,12 +31,14 @@ Open `http://127.0.0.1:8767/`. Google tags are disabled on localhost. There is n
 self-canonicals and a regional-hub `x-default`. Keep those links consistent;
 the validator rejects orphaned pages and mismatched regional alternates.
 
-Regional pages describe upcoming distribution, because the app is currently
-US-only. On each confirmed country launch, update its visible availability,
-FAQ answer and JSON-LD answer together. Verify the public storefront and
-subscription prices before changing the CTA or pricing language. Preserve the
-existing US page, `/app` redirect and attribution tokens. Country pages use
-the default App Store product page in their own storefront for organic visits.
+Duet is distributed in the United States, Canada, the UK, Ireland, Australia
+and New Zealand. Regional pages provide local download links and subscription
+prices. Keep visible availability, FAQ answers and JSON-LD answers aligned.
+For any future country launch or availability change, verify the public
+storefront and effective subscription prices before deploying updated CTAs
+or pricing language. Preserve the US page, `/app` redirect and attribution
+tokens. Country pages use the default App Store product page in their own
+storefront for organic visits.
 
 The guides use actual occasions and local school-calendar review, not a claim
 to provide every state/province/school public-holiday calendar. Official
