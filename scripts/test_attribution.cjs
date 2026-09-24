@@ -10,6 +10,16 @@ const source = fs.readFileSync(
 const schedule = "87fdba48-108d-4ed2-8710-4772189f6bb2";
 const holiday = "f5d8dd2d-228a-40c6-b74d-49815c1ca634";
 const paid = "a4de00f6-f673-4e65-9ccd-a66aff48824a";
+const calculatorCases = [
+  ["", "duet_web_calc_202609"],
+  ["?utm_source=newsletter&utm_campaign=unknown", "duet_web_calc_202609"],
+  ["?gclid=test", "duet_google_search_202607"],
+  ["?gbraid=test", "duet_google_search_202607"],
+  ["?wbraid=test", "duet_google_search_202607"],
+  ["?utm_source=google&utm_campaign=unknown", "duet_google_search_202607"],
+  ["?utm_campaign=duet_google_pmax_20260807", "duet_google_pmax_20260807"],
+  ["?utm_campaign=duet_search_bridge_cta_2026_05", "duet_search_bridge_cta_2026_05"],
+];
 const cases = [
   ["home", "", "duet_web_home_202607", null],
   ["co-parenting-expenses", "", "duet_web_co_parenting_expenses_202607", null],
@@ -64,6 +74,9 @@ const cases = [
     paid,
   ],
 ];
+for (const [query, campaign] of calculatorCases) {
+  cases.push(["custody-schedule-calculator", query, campaign, schedule]);
+}
 for (const slug of [
   "regions",
   "canada",
@@ -101,6 +114,61 @@ for (const [slug, query, campaign, ppid] of cases) {
   assert.equal(url.searchParams.get("pt"), "96322844");
   assert.equal(url.searchParams.get("mt"), "8");
 }
+// Every calculator CTA uses the same page-level series, including its click
+// payload. Paid visits must retain their existing campaign and product page.
+const calculatorHTML = fs.readFileSync(
+  path.join(__dirname, "../custody-schedule-calculator/index.html"),
+  "utf8",
+);
+const calculatorLocations = [...calculatorHTML.matchAll(/data-cta-location="([^"]+)"/g)]
+  .map((match) => match[1]);
+assert.deepEqual(calculatorLocations, ["calculator-topbar", "calculator-result", "calculator-bottom"]);
+assert.ok("duet_web_calc_202609".length <= 30);
+for (const [query, campaign] of calculatorCases) {
+  for (const ctaLocation of calculatorLocations) {
+    let click;
+    let prevented = false;
+    const events = [];
+    const callbacks = [];
+    const location = new URL("https://duetcalendar.com/custody-schedule-calculator/" + query);
+    const link = {
+      href: "https://apps.apple.com/app/apple-store/id6756833862?pt=96322844&mt=8",
+      dataset: { ctaLocation },
+      addEventListener(name, callback) {
+        if (name === "click") click = callback;
+      },
+    };
+    vm.runInNewContext(source, {
+      URL,
+      URLSearchParams,
+      document: {
+        querySelectorAll: () => [link],
+        body: { dataset: { pageSlug: "custody-schedule-calculator" } },
+      },
+      window: {
+        location,
+        duetAdsConfig: { conversionSendTo: "test-destination" },
+        gtag(...args) { events.push(args); },
+        setTimeout(callback) { callbacks.push(callback); },
+      },
+    });
+    click({ preventDefault() { prevented = true; } });
+    assert.ok(prevented);
+    const [, , payload] = events.find((event) => event[1] === "app_store_clicked");
+    assert.equal(payload.campaign_token, campaign);
+    assert.equal(payload.app_store_campaign_token, campaign);
+    assert.equal(payload.cta_location, ctaLocation);
+    assert.equal(payload.link_url, link.href);
+    const destination = new URL(payload.link_url);
+    assert.equal(destination.searchParams.get("ct"), campaign);
+    assert.equal(destination.searchParams.get("pt"), "96322844");
+    assert.equal(destination.searchParams.get("mt"), "8");
+    assert.equal(destination.searchParams.get("ppid"), schedule);
+    callbacks.forEach((callback) => callback());
+    assert.equal(location.href, link.href);
+  }
+}
+console.log(`PASS: ${calculatorCases.length * calculatorLocations.length} calculator CTA payloads and fallback navigation.`);
 // /app continues to preserve only supported Apple attribution query parameters.
 const redirect = fs.readFileSync(
   path.join(__dirname, "../app/index.html"),
