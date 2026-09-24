@@ -17,7 +17,11 @@
     inboundCampaign
   ) ? paidCampaignTokens[inboundCampaign] : null;
   var isGooglePMax = inboundCampaign === "duet_google_pmax_20260807";
-  var organicCampaignToken = "duet_web_" + pageSlug.replace(/[^a-z0-9]+/gi, "_").toLowerCase() + "_202607";
+  // Start a new calculator reporting series within Apple's 30-character limit.
+  // Preserve existing campaign names on every other page.
+  var organicCampaignToken = pageSlug === "custody-schedule-calculator"
+    ? "duet_web_calc_202609"
+    : "duet_web_" + pageSlug.replace(/[^a-z0-9]+/gi, "_").toLowerCase() + "_202607";
   var campaignToken = attributedPaidCampaignToken ||
     (isGooglePaid ? "duet_google_search_202607" : organicCampaignToken);
   var trafficSource = isGooglePMax
