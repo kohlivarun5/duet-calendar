@@ -104,7 +104,11 @@
 
   appStoreLinks.forEach(function (link) {
     link.addEventListener("click", function (event) {
+      if (window.duetCalculatorExperiment) {
+        try { window.duetCalculatorExperiment.appStoreClicked(link); } catch (error) { /* Keep navigation usable. */ }
+      }
       var destination = link.href;
+      var clickCampaignToken = new URL(destination).searchParams.get("ct") || campaignToken;
       var hasGoogleTag = typeof window.gtag === "function";
       var didNavigate = false;
 
@@ -122,9 +126,9 @@
       event.preventDefault();
 
       var clickEventParams = {
-        app_store_campaign_token: campaignToken,
+        app_store_campaign_token: clickCampaignToken,
         cta_location: link.dataset.ctaLocation || "unknown",
-        campaign_token: campaignToken,
+        campaign_token: clickCampaignToken,
         custom_product_page_id: productPageID,
         landing_page: pageSlug,
         link_url: destination,

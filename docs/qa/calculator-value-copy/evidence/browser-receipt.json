@@ -1,0 +1,145 @@
+{
+  "capturedAtUTC": "2026-10-03T23:46:01.431Z",
+  "browser": "154.0.8037.97",
+  "scope": "Local source mapped to production host; all analytics and App Store navigation intercepted. This is not live ingestion or deployment.",
+  "checks": [
+    "Automatic result view excluded",
+    "Intentional generation plus visible result creates one exposure",
+    "Treatment visible without horizontal overflow at 320px",
+    "Treatment visible without horizontal overflow at 390px",
+    "Treatment visible without horizontal overflow at 768px",
+    "Treatment visible without horizontal overflow at 1440px",
+    "Real existing jsPDF export downloaded with synthetic inputs",
+    "Qualified result click preserves product page and repeats the same exposure ID",
+    "Intercepted analytics omit calculator names and inputs",
+    "Paid traffic retains copy and destination and is excluded from pilot",
+    "Committed disabled configuration retains existing experience",
+    "Separate control phase token and exposure"
+  ],
+  "sourceSHA256": {
+    "assets/js/calculator-experiment.js": "d03ed135d3fc783d11fb025f03e14a654191b9a3a91a61a83c21e6c8de47b801",
+    "assets/js/calculator-experiment-config.js": "e228d3c3168762a5b72877ce6e3606e73375deb64bbd5880cab0cda919430fe5",
+    "assets/js/calculator-analytics.js": "87b9584b413df9281b6a36febd98beec37590f2d4b0e844caee19c8b36b244a6",
+    "assets/js/site.js": "1ee67236d93d40c88579528637a351894ca909e41130864f69b00707a808e1af",
+    "assets/js/custody-calculator.js": "6630a35a5eaf83092458b412b49c2e87609ed6482ec9823859765399e4947e27",
+    "custody-schedule-calculator/index.html": "9d570ce9a2f3878f65da906d2921573876777af88e63137c9b14377178a7a552",
+    "styles.css": "0fd9abd9d8627f082a9364f3fe6e313d88687692fcf2310d33b8be8f62f74b93"
+  },
+  "interceptedEventProperties": [
+    {
+      "name": "calculator_schedule_generated",
+      "properties": {
+        "experiment_id": "calculator_shared_value_202609",
+        "phase": "treatment",
+        "copy_version": "shared_value_v1",
+        "measurement_version": "result_visibility_v1",
+        "release": "calculator_shared_value_20261003",
+        "landing_page": "custody-schedule-calculator",
+        "traffic_source": "organic_or_direct"
+      }
+    },
+    {
+      "name": "calculator_result_viewed",
+      "properties": {
+        "experiment_id": "calculator_shared_value_202609",
+        "phase": "treatment",
+        "copy_version": "shared_value_v1",
+        "measurement_version": "result_visibility_v1",
+        "release": "calculator_shared_value_20261003",
+        "landing_page": "custody-schedule-calculator",
+        "traffic_source": "organic_or_direct"
+      }
+    },
+    {
+      "name": "calculator_pdf_exported",
+      "properties": {
+        "experiment_id": "calculator_shared_value_202609",
+        "phase": "treatment",
+        "copy_version": "shared_value_v1",
+        "measurement_version": "result_visibility_v1",
+        "release": "calculator_shared_value_20261003",
+        "landing_page": "custody-schedule-calculator",
+        "traffic_source": "organic_or_direct",
+        "result_exposed": true
+      }
+    },
+    {
+      "name": "calculator_result_viewed",
+      "properties": {
+        "experiment_id": "calculator_shared_value_202609",
+        "phase": "treatment",
+        "copy_version": "shared_value_v1",
+        "measurement_version": "result_visibility_v1",
+        "release": "calculator_shared_value_20261003",
+        "landing_page": "custody-schedule-calculator",
+        "traffic_source": "organic_or_direct"
+      }
+    },
+    {
+      "name": "app_store_clicked",
+      "properties": {
+        "experiment_id": "calculator_shared_value_202609",
+        "phase": "treatment",
+        "copy_version": "shared_value_v1",
+        "measurement_version": "result_visibility_v1",
+        "release": "calculator_shared_value_20261003",
+        "landing_page": "custody-schedule-calculator",
+        "traffic_source": "organic_or_direct",
+        "cta_location": "calculator-result",
+        "result_exposed": true,
+        "app_store_campaign_token": "duet_calc_value_t_202609"
+      }
+    },
+    {
+      "name": "calculator_schedule_generated",
+      "properties": {
+        "experiment_id": "calculator_shared_value_202609",
+        "phase": "control",
+        "copy_version": "existing_result_v1",
+        "measurement_version": "result_visibility_v1",
+        "release": "calculator_shared_value_20261003",
+        "landing_page": "custody-schedule-calculator",
+        "traffic_source": "organic_or_direct"
+      }
+    },
+    {
+      "name": "calculator_result_viewed",
+      "properties": {
+        "experiment_id": "calculator_shared_value_202609",
+        "phase": "control",
+        "copy_version": "existing_result_v1",
+        "measurement_version": "result_visibility_v1",
+        "release": "calculator_shared_value_20261003",
+        "landing_page": "custody-schedule-calculator",
+        "traffic_source": "organic_or_direct"
+      }
+    },
+    {
+      "name": "calculator_result_viewed",
+      "properties": {
+        "experiment_id": "calculator_shared_value_202609",
+        "phase": "control",
+        "copy_version": "existing_result_v1",
+        "measurement_version": "result_visibility_v1",
+        "release": "calculator_shared_value_20261003",
+        "landing_page": "custody-schedule-calculator",
+        "traffic_source": "organic_or_direct"
+      }
+    },
+    {
+      "name": "app_store_clicked",
+      "properties": {
+        "experiment_id": "calculator_shared_value_202609",
+        "phase": "control",
+        "copy_version": "existing_result_v1",
+        "measurement_version": "result_visibility_v1",
+        "release": "calculator_shared_value_20261003",
+        "landing_page": "custody-schedule-calculator",
+        "traffic_source": "organic_or_direct",
+        "cta_location": "calculator-result",
+        "result_exposed": true,
+        "app_store_campaign_token": "duet_calc_value_c_202609"
+      }
+    }
+  ]
+}
