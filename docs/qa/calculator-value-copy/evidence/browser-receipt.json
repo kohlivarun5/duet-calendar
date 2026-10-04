@@ -1,145 +1,27 @@
 {
-  "capturedAtUTC": "2026-10-04T00:02:21.463Z",
+  "capturedAtUTC": "2026-10-04T01:38:19.702Z",
   "browser": "154.0.8037.97",
-  "scope": "Local source mapped to production host; all analytics and App Store navigation intercepted. This is not live ingestion or deployment.",
+  "scope": "Local source mapped to production host; outbound analytics and App Store navigation intercepted. This is not a deployment or conversion-lift claim.",
   "checks": [
-    "Automatic result view excluded",
-    "Intentional generation plus visible result creates one exposure",
-    "Treatment visible without horizontal overflow at 320px",
-    "Treatment visible without horizontal overflow at 390px",
-    "Treatment visible without horizontal overflow at 768px",
-    "Treatment visible without horizontal overflow at 1440px",
-    "Real existing jsPDF export downloaded with synthetic inputs",
-    "Qualified result click preserves product page and repeats the same exposure ID",
-    "Intercepted analytics omit calculator names and inputs",
-    "Paid traffic retains copy and destination and is excluded from pilot",
-    "Committed disabled configuration retains existing experience",
-    "Separate control phase token and exposure"
+    "Copy and free-start action visible without analytics activation",
+    "Calculator accepts synthetic names and generates calendar",
+    "Copy and actions visible without horizontal overflow at 320px",
+    "Copy and actions visible without horizontal overflow at 390px",
+    "Copy and actions visible without horizontal overflow at 768px",
+    "Copy and actions visible without horizontal overflow at 1440px",
+    "Real jsPDF export downloaded with synthetic inputs",
+    "Organic result click preserves campaign and custom product page",
+    "Existing paid campaign preserved: duet_google_search_202607",
+    "Existing paid campaign preserved: duet_google_pmax_20260807",
+    "Promotional copy and actions omitted from print",
+    "No Amplitude requests, experiment scripts, or browser storage created"
   ],
   "sourceSHA256": {
-    "assets/js/calculator-experiment.js": "0f1daca5b108f9ed849abf109d0678dfbe5ac32888a2ba60f63a86169a80cffe",
-    "assets/js/calculator-experiment-config.js": "e228d3c3168762a5b72877ce6e3606e73375deb64bbd5880cab0cda919430fe5",
-    "assets/js/calculator-analytics.js": "87b9584b413df9281b6a36febd98beec37590f2d4b0e844caee19c8b36b244a6",
-    "assets/js/site.js": "1ee67236d93d40c88579528637a351894ca909e41130864f69b00707a808e1af",
-    "assets/js/custody-calculator.js": "6630a35a5eaf83092458b412b49c2e87609ed6482ec9823859765399e4947e27",
-    "custody-schedule-calculator/index.html": "9d570ce9a2f3878f65da906d2921573876777af88e63137c9b14377178a7a552",
+    "assets/js/site.js": "e3be173688f8b507be09e2b00ca6682c4d209def551b2c817bf303eded1e9dc4",
+    "assets/js/custody-calculator.js": "bed5fe4a3ff30ac51d6a8735ba6226ace157b76e671a934475c34dec403af22c",
+    "custody-schedule-calculator/index.html": "c3eb233e54847a1c4fd3342c82da33800e2bbe1b8a89ea820dbd002c28aebeec",
     "styles.css": "0fd9abd9d8627f082a9364f3fe6e313d88687692fcf2310d33b8be8f62f74b93"
   },
-  "interceptedEventProperties": [
-    {
-      "name": "calculator_schedule_generated",
-      "properties": {
-        "experiment_id": "calculator_shared_value_202609",
-        "phase": "treatment",
-        "copy_version": "shared_value_v1",
-        "measurement_version": "result_visibility_v1",
-        "release": "calculator_shared_value_20261003",
-        "landing_page": "custody-schedule-calculator",
-        "traffic_source": "organic_or_direct"
-      }
-    },
-    {
-      "name": "calculator_result_viewed",
-      "properties": {
-        "experiment_id": "calculator_shared_value_202609",
-        "phase": "treatment",
-        "copy_version": "shared_value_v1",
-        "measurement_version": "result_visibility_v1",
-        "release": "calculator_shared_value_20261003",
-        "landing_page": "custody-schedule-calculator",
-        "traffic_source": "organic_or_direct"
-      }
-    },
-    {
-      "name": "calculator_pdf_exported",
-      "properties": {
-        "experiment_id": "calculator_shared_value_202609",
-        "phase": "treatment",
-        "copy_version": "shared_value_v1",
-        "measurement_version": "result_visibility_v1",
-        "release": "calculator_shared_value_20261003",
-        "landing_page": "custody-schedule-calculator",
-        "traffic_source": "organic_or_direct",
-        "result_exposed": true
-      }
-    },
-    {
-      "name": "calculator_result_viewed",
-      "properties": {
-        "experiment_id": "calculator_shared_value_202609",
-        "phase": "treatment",
-        "copy_version": "shared_value_v1",
-        "measurement_version": "result_visibility_v1",
-        "release": "calculator_shared_value_20261003",
-        "landing_page": "custody-schedule-calculator",
-        "traffic_source": "organic_or_direct"
-      }
-    },
-    {
-      "name": "app_store_clicked",
-      "properties": {
-        "experiment_id": "calculator_shared_value_202609",
-        "phase": "treatment",
-        "copy_version": "shared_value_v1",
-        "measurement_version": "result_visibility_v1",
-        "release": "calculator_shared_value_20261003",
-        "landing_page": "custody-schedule-calculator",
-        "traffic_source": "organic_or_direct",
-        "cta_location": "calculator-result",
-        "result_exposed": true,
-        "app_store_campaign_token": "duet_calc_value_t_202609"
-      }
-    },
-    {
-      "name": "calculator_schedule_generated",
-      "properties": {
-        "experiment_id": "calculator_shared_value_202609",
-        "phase": "control",
-        "copy_version": "existing_result_v1",
-        "measurement_version": "result_visibility_v1",
-        "release": "calculator_shared_value_20261003",
-        "landing_page": "custody-schedule-calculator",
-        "traffic_source": "organic_or_direct"
-      }
-    },
-    {
-      "name": "calculator_result_viewed",
-      "properties": {
-        "experiment_id": "calculator_shared_value_202609",
-        "phase": "control",
-        "copy_version": "existing_result_v1",
-        "measurement_version": "result_visibility_v1",
-        "release": "calculator_shared_value_20261003",
-        "landing_page": "custody-schedule-calculator",
-        "traffic_source": "organic_or_direct"
-      }
-    },
-    {
-      "name": "calculator_result_viewed",
-      "properties": {
-        "experiment_id": "calculator_shared_value_202609",
-        "phase": "control",
-        "copy_version": "existing_result_v1",
-        "measurement_version": "result_visibility_v1",
-        "release": "calculator_shared_value_20261003",
-        "landing_page": "custody-schedule-calculator",
-        "traffic_source": "organic_or_direct"
-      }
-    },
-    {
-      "name": "app_store_clicked",
-      "properties": {
-        "experiment_id": "calculator_shared_value_202609",
-        "phase": "control",
-        "copy_version": "existing_result_v1",
-        "measurement_version": "result_visibility_v1",
-        "release": "calculator_shared_value_20261003",
-        "landing_page": "custody-schedule-calculator",
-        "traffic_source": "organic_or_direct",
-        "cta_location": "calculator-result",
-        "result_exposed": true,
-        "app_store_campaign_token": "duet_calc_value_c_202609"
-      }
-    }
-  ]
+  "amplitudeRequests": [],
+  "scriptErrors": []
 }

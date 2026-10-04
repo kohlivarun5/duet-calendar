@@ -357,7 +357,6 @@
       doc.setTextColor(88, 99, 111);
       doc.text("Created with Duet Co-parent Calendar.", margin, 754);
       doc.save("duet-custody-schedule.pdf");
-      if (window.duetCalculatorExperiment) window.duetCalculatorExperiment.pdfExported();
     });
   }
 
@@ -409,7 +408,6 @@
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       generateSchedule();
-      if (window.duetCalculatorExperiment) window.duetCalculatorExperiment.generated();
     });
 
     if (pdfButton) {

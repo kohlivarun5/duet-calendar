@@ -8,8 +8,6 @@ Static marketing website and free custody-planning tools for [Duet Calendar](htt
 python3 -m http.server 8767 --bind 127.0.0.1
 python3 scripts/validate_site.py
 node scripts/test_attribution.cjs
-node scripts/test_calculator_experiment.cjs
-node scripts/test_calculator_analytics.cjs
 node --check assets/js/site.js
 node --check assets/js/custody-calculator.js
 git diff --check
@@ -46,7 +44,5 @@ The guides use actual occasions and local school-calendar review, not a claim
 to provide every state/province/school public-holiday calendar. Official
 holiday references are linked from each guide.
 
-The calculator's staged value-copy pilot is prepared with tracking disabled.
-Read [its measurement and activation contract](docs/calculator-value-measurement.md)
-before enabling a phase. A queryable web-only destination is required; the app's
-Amplitude project must not receive these browser session identities.
+The calculator result explains free private planning and paid Duet Shared.
+See [the copy rollout and browser checks](docs/calculator-value-copy.md).
