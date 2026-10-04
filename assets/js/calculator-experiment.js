@@ -24,7 +24,8 @@
   // An Ads tag alone is not a reportable session source. Fail closed until the
   // dedicated adapter and its read access are verified and explicitly enabled.
   if (!config.enabled || !["control", "treatment"].includes(phase) ||
-      !config.release || !sink || sink.ready !== true || typeof sink.send !== "function" ||
+      !/^calculator_shared_value_[a-z0-9_]{1,40}$/.test(config.release || "") ||
+      !sink || sink.ready !== true || typeof sink.send !== "function" ||
       !result || !copy || !resultLink || excluded || !window.IntersectionObserver ||
       !window.crypto || typeof window.crypto.randomUUID !== "function") return;
 
@@ -44,6 +45,9 @@
 
   var manualResult = false;
   var visible = false;
+  var exposureInFlight = null;
+  var retryTimer = null;
+  var retryCount = 0;
   var phaseKey = experiment + ":" + phase + ":" + config.release;
   var copyVersion = phase === "treatment" ? "shared_value_v1" : "existing_result_v1";
   var token = phase === "treatment" ? "duet_calc_value_t_202609" : "duet_calc_value_c_202609";
@@ -60,6 +64,10 @@
 
   function touch() {
     if (Date.now() - session.lastActivity >= idleLimit) {
+      if (retryTimer !== null) window.clearTimeout(retryTimer);
+      retryTimer = null;
+      retryCount = 0;
+      exposureInFlight = null;
       session = { id: window.crypto.randomUUID(), startedAt: Date.now(), lastActivity: Date.now(), phases: {} };
       manualResult = false;
     }
@@ -86,13 +94,19 @@
     };
   }
 
-  function send(events) {
+  function send(events, accepted, rejected) {
+    function resolved(result) {
+      if (result === true) { if (accepted) accepted(); }
+      else if (rejected) rejected();
+    }
     try {
       // Adapters must accept only this bounded schema. They must never enrich
       // it with form values, URL/referrer strings, or persistent user identity.
       var pending = sink.send(events);
-      if (pending && typeof pending.catch === "function") pending.catch(function () {});
-    } catch (error) { /* Analytics must not block a calculator action. */ }
+      if (pending && typeof pending.then === "function") {
+        pending.then(resolved, function () { if (rejected) rejected(); });
+      } else resolved(pending);
+    } catch (error) { if (rejected) rejected(); }
   }
 
   function exposure() {
@@ -100,13 +114,40 @@
     return saved ? record("calculator_result_viewed", {}, saved.id, saved.time) : null;
   }
 
+  function sendPendingExposure() {
+    var event = exposure();
+    var state = session.phases[phaseKey];
+    if (!event || state.acknowledged || exposureInFlight === event.id || retryTimer !== null ||
+        document.visibilityState !== "visible") return;
+    exposureInFlight = event.id;
+    function isCurrent() { return session.id === event.sessionID && session.phases[phaseKey] === state; }
+    send([event], function () {
+      if (exposureInFlight === event.id) exposureInFlight = null;
+      if (!isCurrent()) return;
+      state.acknowledged = true;
+      retryCount = 0;
+      persist();
+    }, function () {
+      if (exposureInFlight === event.id) exposureInFlight = null;
+      if (!isCurrent() || retryCount >= 3) return;
+      var delay = [1000, 5000, 30000][retryCount++];
+      retryTimer = window.setTimeout(function () {
+        retryTimer = null;
+        if (isCurrent()) sendPendingExposure();
+      }, delay);
+    });
+  }
+
   function qualify() {
+    // Retry a previously qualified exposure even after a reload. A click must
+    // not be the only way to recover a lost denominator event.
+    sendPendingExposure();
     if (!manualResult || !visible || document.visibilityState !== "visible") return;
     if (!touch() || !manualResult) return;
     if (!session.phases[phaseKey]) {
-      session.phases[phaseKey] = { id: window.crypto.randomUUID(), time: Date.now() };
+      session.phases[phaseKey] = { id: window.crypto.randomUUID(), time: Date.now(), acknowledged: false };
       if (!persist()) { delete session.phases[phaseKey]; return; }
-      send([exposure()]);
+      sendPendingExposure();
     }
   }
 
@@ -117,6 +158,7 @@
     qualify();
   }, { threshold: [0, 0.5] }).observe(result);
   document.addEventListener("visibilitychange", qualify);
+  sendPendingExposure();
 
   window.duetCalculatorExperiment = {
     generated: function () {

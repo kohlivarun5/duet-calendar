@@ -1,5 +1,5 @@
 {
-  "capturedAtUTC": "2026-10-03T23:46:01.431Z",
+  "capturedAtUTC": "2026-10-04T00:02:21.463Z",
   "browser": "154.0.8037.97",
   "scope": "Local source mapped to production host; all analytics and App Store navigation intercepted. This is not live ingestion or deployment.",
   "checks": [
@@ -17,7 +17,7 @@
     "Separate control phase token and exposure"
   ],
   "sourceSHA256": {
-    "assets/js/calculator-experiment.js": "d03ed135d3fc783d11fb025f03e14a654191b9a3a91a61a83c21e6c8de47b801",
+    "assets/js/calculator-experiment.js": "0f1daca5b108f9ed849abf109d0678dfbe5ac32888a2ba60f63a86169a80cffe",
     "assets/js/calculator-experiment-config.js": "e228d3c3168762a5b72877ce6e3606e73375deb64bbd5880cab0cda919430fe5",
     "assets/js/calculator-analytics.js": "87b9584b413df9281b6a36febd98beec37590f2d4b0e844caee19c8b36b244a6",
     "assets/js/site.js": "1ee67236d93d40c88579528637a351894ca909e41130864f69b00707a808e1af",

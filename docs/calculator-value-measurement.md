@@ -78,6 +78,12 @@ Apple consistency. Tracking never prevents navigation. The exposure is replayed
 with a result click using the same insert ID so the ingestion service can dedupe
 it and recover a lost initial exposure request. Storage by itself is not proof
 of successful ingestion.
+Exposure stays pending until the adapter confirms ingestion. Failed exposure
+requests retry without a click (1s, 5s and 30s backoff), and pending exposure is
+also recovered on a later visible interaction or reload with the same ID/time.
+This avoids recovering only the numerator population. Permanent blocking or
+leaving before delivery can still cause observation loss. Invalid release labels
+fail closed before the treatment changes any copy.
 
 ## Exact reporting definition
 

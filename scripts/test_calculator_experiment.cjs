@@ -9,6 +9,8 @@ function check(name, fn) { fn(); checks++; }
 function setup(options = {}) {
   let now = 1791000000000;
   const events = [];
+  const attempts = [];
+  const timers = [];
   const storage = options.storage || new Map();
   const listeners = {};
   const offer = {};
@@ -31,9 +33,17 @@ function setup(options = {}) {
     crypto: { randomUUID: crypto.randomUUID },
     duetCalculatorExperimentConfig: { enabled: true, phase: options.phase || "treatment", release: "calculator_shared_value_20261003", ...options.config },
     duetWebAnalytics: { ready: !options.unready, send(batch) {
+      attempts.push(...JSON.parse(JSON.stringify(batch)));
       if (options.sinkThrows) throw new Error("blocked");
+      if (batch[0].name === "calculator_result_viewed" && options.rejectExposures > 0) {
+        options.rejectExposures--;
+        return Promise.reject(new Error("temporary network failure"));
+      }
       events.push(...JSON.parse(JSON.stringify(batch)));
+      return true;
     } },
+    setTimeout(fn) { timers.push(fn); return timers.length; },
+    clearTimeout(id) { timers[id - 1] = () => {}; },
     sessionStorage: {
       getItem(key) { if (options.storageThrows) throw new Error("blocked"); return storage.get(key) || null; },
       setItem(key, value) { if (options.storageThrows) throw new Error("blocked"); storage.set(key, value); },
@@ -45,7 +55,8 @@ function setup(options = {}) {
     window, document, navigator: { userAgent: "ordinary-browser", ...options.navigator },
     URL, URLSearchParams, Date: { now: () => now },
   });
-  return { events, storage, link, copy, window, api: window.duetCalculatorExperiment,
+  return { events, attempts, timers, storage, link, copy, window, api: window.duetCalculatorExperiment,
+    runNextTimer() { timers.shift()(); },
     visible(value = true) { observer([{ target: offer, isIntersecting: value, intersectionRatio: value ? 0.5 : 0 }]); },
     hidden(value) { document.visibilityState = value ? "hidden" : "visible"; listeners.visibilitychange(); },
     advance(ms) { now += ms; },
@@ -113,7 +124,8 @@ check("control and treatment stay separate", () => {
 for (const query of ["?gclid=x", "?gbraid=x", "?wbraid=x", "?msclkid=x", "?fbclid=x", "?utm_source=google", "?utm_medium=paid_social", "?utm_campaign=duet_google_pmax_20260807", "?utm_campaign=duet_search_bridge_cta_2026_05", "?duet_qa=1"]) {
   check("excludes " + query, () => assert.equal(setup({ query }).api, undefined));
 }
-for (const options of [{ config: { enabled: false } }, { unready: true }, { storageThrows: true }, { local: true },
+for (const options of [{ config: { enabled: false } }, { config: { release: "calculator-shared-value" } },
+  { config: { release: "calculator_shared_value_UPPER" } }, { unready: true }, { storageThrows: true }, { local: true },
   { navigator: { webdriver: true } }, { navigator: { userAgent: "ExampleBot" } },
   { navigator: { globalPrivacyControl: true } }, { navigator: { doNotTrack: "1" } }]) {
   check("fails closed " + JSON.stringify(options), () => assert.equal(setup(options).api, undefined));
@@ -138,3 +150,21 @@ check("event schema excludes family inputs, URLs and persistent identity", () =>
   for (const event of t.events) assert.deepEqual(Object.keys(event).sort(), ["id", "name", "properties", "sessionID", "sessionStartedAt", "time"].sort());
 });
 console.log(`PASS: ${checks} calculator exposure, session, exclusion, navigation and privacy checks.`);
+
+(async () => {
+  const t = setup({ rejectExposures: 2 }); t.visible(); t.api.generated();
+  await Promise.resolve(); t.runNextTimer(); await Promise.resolve(); t.runNextTimer();
+  const attempts = t.attempts.filter(e => e.name === "calculator_result_viewed");
+  assert.equal(attempts.length, 3);
+  assert.equal(new Set(attempts.map(e => e.id)).size, 1);
+  assert.equal(new Set(attempts.map(e => e.time)).size, 1);
+  assert.equal(t.events.filter(e => e.name === "calculator_result_viewed").length, 1);
+  assert.equal(t.events.filter(e => e.name === "app_store_clicked").length, 0);
+  assert.equal(Object.values(JSON.parse([...t.storage.values()][0]).phases)[0].acknowledged, true);
+  const dropped = setup({ rejectExposures: 1 }); dropped.visible(); dropped.api.generated();
+  await Promise.resolve();
+  const reloaded = setup({ storage: dropped.storage });
+  assert.equal(reloaded.events[0].name, "calculator_result_viewed");
+  assert.equal(reloaded.events[0].id, dropped.attempts.find(e => e.name === "calculator_result_viewed").id);
+  console.log("PASS: failed exposure retries without a click, preserves identity/time, and recovers after reload.");
+})().catch(error => { console.error(error); process.exitCode = 1; });
