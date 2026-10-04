@@ -761,6 +761,20 @@ footer {
   cursor: pointer;
 }
 
+.calculator-value-copy {
+  margin: 24px 0 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.calculator-value-copy h3 { margin: 0 0 12px; }
+.calculator-value-copy p { margin: 0 0 12px; line-height: 1.6; }
+.calculator-device-note { color: var(--muted); font-size: 0.875rem; }
+
+@media print {
+  .calculator-result-offer { display: none; }
+}
+
 .outline-button {
   border: 1px solid var(--line);
   background: #fff;

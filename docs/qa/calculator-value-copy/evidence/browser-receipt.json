@@ -1,0 +1,27 @@
+{
+  "capturedAtUTC": "2026-10-04T01:38:19.702Z",
+  "browser": "154.0.8037.97",
+  "scope": "Local source mapped to production host; outbound analytics and App Store navigation intercepted. This is not a deployment or conversion-lift claim.",
+  "checks": [
+    "Copy and free-start action visible without analytics activation",
+    "Calculator accepts synthetic names and generates calendar",
+    "Copy and actions visible without horizontal overflow at 320px",
+    "Copy and actions visible without horizontal overflow at 390px",
+    "Copy and actions visible without horizontal overflow at 768px",
+    "Copy and actions visible without horizontal overflow at 1440px",
+    "Real jsPDF export downloaded with synthetic inputs",
+    "Organic result click preserves campaign and custom product page",
+    "Existing paid campaign preserved: duet_google_search_202607",
+    "Existing paid campaign preserved: duet_google_pmax_20260807",
+    "Promotional copy and actions omitted from print",
+    "No Amplitude requests, experiment scripts, or browser storage created"
+  ],
+  "sourceSHA256": {
+    "assets/js/site.js": "e3be173688f8b507be09e2b00ca6682c4d209def551b2c817bf303eded1e9dc4",
+    "assets/js/custody-calculator.js": "bed5fe4a3ff30ac51d6a8735ba6226ace157b76e671a934475c34dec403af22c",
+    "custody-schedule-calculator/index.html": "c3eb233e54847a1c4fd3342c82da33800e2bbe1b8a89ea820dbd002c28aebeec",
+    "styles.css": "0fd9abd9d8627f082a9364f3fe6e313d88687692fcf2310d33b8be8f62f74b93"
+  },
+  "amplitudeRequests": [],
+  "scriptErrors": []
+}

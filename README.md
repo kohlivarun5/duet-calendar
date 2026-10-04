@@ -43,3 +43,6 @@ storefront for organic visits.
 The guides use actual occasions and local school-calendar review, not a claim
 to provide every state/province/school public-holiday calendar. Official
 holiday references are linked from each guide.
+
+The calculator result explains free private planning and paid Duet Shared.
+See [the copy rollout and browser checks](docs/calculator-value-copy.md).
