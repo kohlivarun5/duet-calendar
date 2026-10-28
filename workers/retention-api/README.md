@@ -1,6 +1,6 @@
 # Duet retention API
 
-Cloudflare Worker for `api.duetcalendar.com`, maintained in the same repository as the static Duet website. The website continues to deploy through GitHub Pages. `scripts/stage_pages.py` excludes this entire directory, dependencies, local secrets, and internal scripts from the Pages artifact.
+Cloudflare Worker for `api-sandbox.duetcalendar.com` (sandbox) and `api.duetcalendar.com` (production), maintained in the same repository as the static Duet website. The website continues to deploy through GitHub Pages. `scripts/stage_pages.py` excludes this entire directory, dependencies, local secrets, and internal scripts from the Pages artifact.
 
 ## Routes and trust
 
@@ -37,7 +37,14 @@ Apple's official Node library is pinned to 3.1.0. The bundled Apple Root CA G3 i
 
 ## Cloudflare deployment
 
-Wrangler's `sandbox` and `production` environments have separate Worker names and Durable Object storage. Both ship with the campaign **disabled**. Sandbox initially uses a `workers.dev` URL; production uses the custom domain `api.duetcalendar.com`. The domain's Cloudflare zone/account must be accessible.
+Wrangler's `sandbox` and `production` environments have separate Worker names and Durable Object storage. Both ship with the campaign **disabled**. Use the stable custom domains below for iOS configuration and Apple callbacks. Sandbox also retains its `workers.dev` URL for development; production keeps `workers.dev` disabled. The domain's Cloudflare zone/account must be accessible, and the routes must be deployed and read back before use.
+
+| Environment | Stable API origin |
+| --- | --- |
+| Sandbox | `https://api-sandbox.duetcalendar.com` |
+| Production | `https://api.duetcalendar.com` |
+
+Register each environment's `/v1/apple/retention` callback and `/v1/apple/subscription-notifications` receiver on its matching origin. Never send sandbox purchase proofs to the production origin or reuse the production ledger for sandbox.
 
 ```sh
 npx wrangler login
@@ -79,7 +86,7 @@ Use local environment variables `IAP_KEY_ID`, `IAP_ISSUER_ID`, and `IAP_PRIVATE_
 node scripts/apple-retention.mjs status --environment Sandbox
 node scripts/apple-retention.mjs upload-message --environment Sandbox --message-id <lowercase-uuid> --file messages/en-US.json --yes
 node scripts/apple-retention.mjs set-defaults --environment Sandbox --message-id <approved-uuid> --yes
-node scripts/apple-retention.mjs set-url --environment Sandbox --url https://<sandbox-worker>.workers.dev/v1/apple/retention --yes
+node scripts/apple-retention.mjs set-url --environment Sandbox --url https://api-sandbox.duetcalendar.com/v1/apple/retention --yes
 node scripts/apple-retention.mjs performance-test --environment Sandbox --transaction-id <sandbox-original-id> --yes
 node scripts/apple-retention.mjs performance-result --environment Sandbox --request-id <request-id>
 ```
