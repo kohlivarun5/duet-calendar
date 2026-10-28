@@ -1,0 +1,36 @@
+name: Validate retention API
+
+on:
+  pull_request:
+    paths:
+      - workers/retention-api/**
+      - .github/workflows/validate-retention-api.yml
+      - .github/workflows/deploy-retention-api.yml
+  push:
+    branches: [main]
+    paths:
+      - workers/retention-api/**
+      - .github/workflows/validate-retention-api.yml
+      - .github/workflows/deploy-retention-api.yml
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: workers/retention-api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: workers/retention-api/package-lock.json
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+      - run: npm run build
+      - run: npm run test:runtime

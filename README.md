@@ -10,10 +10,12 @@ python3 scripts/validate_site.py
 node scripts/test_attribution.cjs
 node --check assets/js/site.js
 node --check assets/js/custody-calculator.js
+python3 -B -m unittest discover -s scripts -p 'test_stage_pages.py'
+python3 scripts/stage_pages.py
 git diff --check
 ```
 
-Open `http://127.0.0.1:8767/`. Google tags are disabled on localhost. There is no package installation or compilation step. The site validator checks all sitemap pages, local links and assets, canonical URLs, unique metadata, JSON-LD, image dimensions, and indexability. The attribution tests cover organic pages, dedicated schedule and holiday listings, paid campaigns, and the `/app` redirect.
+Open `http://127.0.0.1:8767/`. Google tags are disabled on localhost. The static website needs no package installation or compilation. The site validator checks all sitemap pages, local links and assets, canonical URLs, unique metadata, JSON-LD, image dimensions, and indexability. The attribution tests cover organic pages, dedicated schedule and holiday listings, paid campaigns, and the `/app` redirect.
 
 ## Editing and release
 
@@ -21,8 +23,12 @@ Open `http://127.0.0.1:8767/`. Google tags are disabled on localhost. There is n
 - Keep each page's visible content, description, social metadata, and structured data consistent. Add new public pages to `sitemap.xml` and link them from a relevant existing page.
 - Update `lastmod` only for pages that actually changed. Keep `/app/` out of the sitemap and retain its `noindex` and attribution-preserving redirect.
 - Organic homepage and feature-page CTAs open the default App Store listing. Existing paid campaigns, schedule guides, and holiday guides retain their custom product page destinations. Campaign tokens remain stable for comparison over time.
-- Every PR runs validation. A push to `main` validates and deploys the repository root via `.github/workflows/deploy-pages.yml`.
+- Every PR runs validation. A push to `main` validates and deploys `_site/` via `.github/workflows/deploy-pages.yml`. `scripts/stage_pages.py` copies only tracked public assets; backend code, dependencies, internal docs, scripts, dotfiles, and credentials are excluded.
 - See [asset provenance and SEO notes](docs/website-refresh-20260908.md) for the 1.18 website refresh.
+
+## Retention API
+
+The separate [retention API](workers/retention-api/README.md) runs as a Cloudflare Worker. Its Node.js dependencies and deployment are independent of GitHub Pages. Pull requests validate it on Node 24; the manual **Deploy retention API** workflow selects sandbox or production and uses `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository or environment secrets.
 
 ## Regional discovery
 
