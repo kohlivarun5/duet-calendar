@@ -116,6 +116,7 @@ test('realtime normalization preserves string transaction IDs without numeric pr
 });
 
 test('Sandbox still requires the real application Apple ID', () => {
+  rejectsPolicy(() => validateRealtimeRequest(request({ appAppleId: undefined }), config(), NOW), 'app_identity_mismatch', 401);
   rejectsPolicy(() => validateRealtimeRequest(request({ appAppleId: 0 }), config(), NOW), 'app_identity_mismatch', 401);
   rejectsPolicy(() => validateRealtimeRequest(request({ appAppleId: String(DEFAULT_APP_ID) }), config(), NOW), 'app_identity_mismatch', 401);
 });

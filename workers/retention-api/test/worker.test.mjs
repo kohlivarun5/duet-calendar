@@ -45,7 +45,7 @@ function fixture({ campaign = {}, realtime = {}, transaction = {}, renewal = {},
     fetchSubscriptionStatus: async (...args) => { calls.push(['fetchSubscriptionStatus', ...args]); return proof; },
     verifyNotification: async (...args) => {
       calls.push(['verifyNotification', ...args]);
-      return { notification: { data: { appAppleId: DEFAULT_APP_ID, bundleId: DEFAULT_BUNDLE_ID,
+      return { notification: { data: { bundleId: DEFAULT_BUNDLE_ID,
         environment: 'Sandbox' }, ...notification }, transaction: null, renewal: null };
     },
     ledgerRequest: async (...args) => { calls.push(['ledgerRequest', ...args]); return { signature: SIGNATURE }; },
@@ -164,6 +164,20 @@ test('decoded Apple request remains bound to app ID, environment, source allowli
   }
   const { handler, env } = fixture({ campaign: { sourceProductIds: [MONTHLY_PRODUCT_ID] } });
   assert.equal((await handler(request(), env)).status, 400);
+});
+
+test('realtime callbacks still require the exact app ID in both Sandbox and Production', async () => {
+  // Unlike Sandbox notifications/status responses, Apple's realtime request
+  // schema requires a numeric appAppleId in both environments.
+  for (const environment of ['Sandbox', 'Production']) {
+    for (const appAppleId of [undefined, null, 0, String(DEFAULT_APP_ID)]) {
+      const { handler, env, calls } = fixture({ realtime: { appAppleId, environment } });
+      const response = await handler(request(), { ...env, ENVIRONMENT: environment });
+      assert.equal(response.status, 401);
+      assert.deepEqual(await response.json(), { error: 'app_identity_mismatch' });
+      assert.equal(calls.some(call => ['fetchSubscriptionStatus', 'ledgerRequest'].includes(call[0])), false);
+    }
+  }
 });
 
 test('annual cancellation response contains only the monthly promotional-offer selection', async () => {
@@ -313,9 +327,42 @@ test('invalid notification signature and app scope cannot mutate the ledger', as
 });
 
 function notificationProof({ transaction = null, renewal = null } = {}) {
-  return { notification: { data: { appAppleId: DEFAULT_APP_ID, bundleId: DEFAULT_BUNDLE_ID,
+  // Apple's Sandbox data object may omit appAppleId. Do not make every happy
+  // fixture supply the production-only field and mask an integration failure.
+  return { notification: { data: { bundleId: DEFAULT_BUNDLE_ID,
     environment: 'Sandbox' } }, transaction, renewal };
 }
+
+test('notification app identity permits only the documented Sandbox omission and stays strict in Production', async () => {
+  const omitted = Symbol('omitted');
+  for (const [environment, appAppleId, accepted] of [
+    ['Sandbox', omitted, true], ['Sandbox', DEFAULT_APP_ID, true],
+    ['Sandbox', 0, false], ['Sandbox', null, false], ['Sandbox', String(DEFAULT_APP_ID), false],
+    ['Production', omitted, false], ['Production', 0, false],
+    ['Production', null, false], ['Production', String(DEFAULT_APP_ID), false],
+    ['Production', DEFAULT_APP_ID, true],
+  ]) {
+    const data = { bundleId: DEFAULT_BUNDLE_ID, environment };
+    if (appAppleId !== omitted) data.appAppleId = appAppleId;
+    const proof = {
+      notification: { data },
+      transaction: redeemedTransaction({ environment }),
+      renewal: null,
+    };
+    const ledgerCalls = [];
+    const { handler, env } = fixture({ overrides: {
+      verifyNotification: async () => proof,
+      ledgerRequest: async (...args) => { ledgerCalls.push(args); return { recorded: true }; },
+    } });
+    const response = await handler(request('/v1/apple/subscription-notifications'),
+      { ...env, ENVIRONMENT: environment });
+    assert.equal(response.status, accepted ? 200 : 401,
+      `${environment} / ${appAppleId === omitted ? 'omitted' : String(appAppleId)}`);
+    assert.deepEqual(await response.json(), accepted ? { received: true } : { error: 'invalid_notification_binding' });
+    assert.equal(ledgerCalls.length, accepted ? 1 : 0);
+    if (accepted) assert.deepEqual(ledgerCalls[0].slice(0, 2), ['redeemed', ORIGINAL_ID]);
+  }
+});
 
 function redeemedTransaction(overrides = {}) {
   return { bundleId: DEFAULT_BUNDLE_ID, environment: 'Sandbox', productId: MONTHLY_PRODUCT_ID,

@@ -133,11 +133,21 @@ function validClock(now) {
   assert(Number.isSafeInteger(now) && now > 0, 'invalid_policy_clock', 500);
 }
 
+/**
+ * App ID omission is opt-in for Apple schemas that permit it in Sandbox.
+ * Production always requires the exact ID; any supplied value must match.
+ * Realtime requests require appAppleId in both environments and do not opt in.
+ */
+export function appAppleIdMatches(value, config, { allowSandboxOmission = false } = {}) {
+  return value === config.appAppleId
+    || (allowSandboxOmission && config.environment === 'Sandbox' && value === undefined);
+}
+
 /** Validate the decoded, cryptographically verified Apple realtime request. */
 export function validateRealtimeRequest(payload, config, now = Date.now()) {
   validClock(now);
   assert(record(payload), 'invalid_realtime_request');
-  assert(payload.appAppleId === config.appAppleId, 'app_identity_mismatch', 401);
+  assert(appAppleIdMatches(payload.appAppleId, config), 'app_identity_mismatch', 401);
   assert(ENVIRONMENTS.has(payload.environment), 'invalid_request_environment');
   assert(payload.environment === config.environment, 'environment_mismatch', 401);
   assert(typeof payload.originalTransactionId === 'string'

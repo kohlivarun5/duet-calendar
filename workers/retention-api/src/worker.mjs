@@ -1,4 +1,4 @@
-import { parseConfig, validateRealtimeRequest, evaluateNativeEligibility, PolicyError } from './policy.mjs';
+import { parseConfig, validateRealtimeRequest, evaluateNativeEligibility, appAppleIdMatches, PolicyError } from './policy.mjs';
 import * as apple from './apple.mjs';
 
 const MAX_BODY_BYTES = 32_768;
@@ -159,7 +159,10 @@ export function createHandler(dependencies = {}) {
       catch { return response({ error: 'invalid_apple_notification' }, 401); }
       const { notification, transaction, renewal } = result;
       const data = notification.data;
-      if (!data || data.appAppleId !== config.appAppleId || data.bundleId !== config.bundleId
+      // Apple documents data.appAppleId as absent in Sandbox notifications.
+      // https://developer.apple.com/documentation/appstoreservernotifications/data
+      if (!data || !appAppleIdMatches(data.appAppleId, config, { allowSandboxOmission: true })
+          || data.bundleId !== config.bundleId
           || data.environment !== config.environment) throw new PolicyError('invalid_notification_binding', 401);
       if (transaction && (transaction.bundleId !== config.bundleId || transaction.environment !== config.environment
           || typeof transaction.originalTransactionId !== 'string'

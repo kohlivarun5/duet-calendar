@@ -1,5 +1,6 @@
 import { Buffer } from 'node:buffer';
 import { APPLE_ROOT_CA_G3_DER_BASE64 } from './apple-roots.mjs';
+import { appAppleIdMatches } from './policy.mjs';
 
 const verifiers = new Map();
 let cachedSigner;
@@ -86,7 +87,12 @@ export async function fetchSubscriptionStatus(originalTransactionId, config, env
       client: new AppStoreServerAPIClient(privateKey, keyId, issuerId, config.bundleId, config.environment) };
   }
   const result = await cachedClient.client.getAllSubscriptionStatuses(originalTransactionId);
-  if (result.bundleId !== config.bundleId || result.appAppleId !== config.appAppleId
+  // The official StatusResponse schema makes appAppleId optional. Permit its
+  // omission only in Sandbox, while retaining exact bundle/environment checks
+  // and verifying the selected active lineage's signed transaction/renewal.
+  // https://github.com/apple/app-store-server-library-node/blob/v3.1.0/models/StatusResponse.ts
+  if (result.bundleId !== config.bundleId
+      || !appAppleIdMatches(result.appAppleId, config, { allowSandboxOmission: true })
       || result.environment !== config.environment) throw new Error('invalid_status_binding');
   const matches = (result.data ?? []).flatMap(group => group.lastTransactions ?? [])
     .filter(item => item.originalTransactionId === originalTransactionId);

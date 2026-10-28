@@ -1,8 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash, createHmac, generateKeyPairSync, sign, verify, X509Certificate } from 'node:crypto';
+import { AppStoreServerAPIClient, SignedDataVerifier } from '@apple/app-store-server-library';
 import {
-  signOffer, subscriberKey, verifier, verifyRealtime, verifyNative, verifyNotification,
+  signOffer, subscriberKey, verifier, verifyRealtime, verifyNative, verifyNotification, fetchSubscriptionStatus,
 } from '../src/apple.mjs';
 import { APPLE_ROOT_CA_G3_DER_BASE64 } from '../src/apple-roots.mjs';
 import { parseConfig, MONTHLY_PRODUCT_ID, DEFAULT_BUNDLE_ID } from '../src/policy.mjs';
@@ -27,6 +28,37 @@ function decode(token) {
     signature: Buffer.from(signature, 'base64url'),
     signingInput: Buffer.from(`${header}.${body}`),
   };
+}
+
+function statusFixture(environment = 'Sandbox') {
+  return {
+    environment, bundleId: DEFAULT_BUNDLE_ID, appAppleId: config.appAppleId,
+    data: [{ subscriptionGroupIdentifier: '22015374', lastTransactions: [{
+      originalTransactionId: ORIGINAL_ID, status: 1,
+      signedTransactionInfo: 'selected-signed-transaction', signedRenewalInfo: 'selected-signed-renewal',
+    }] }],
+  };
+}
+
+function mockStatusSDK(t, response, environment = 'Sandbox') {
+  const transaction = {
+    originalTransactionId: ORIGINAL_ID, productId: MONTHLY_PRODUCT_ID,
+    bundleId: DEFAULT_BUNDLE_ID, environment,
+  };
+  const renewal = { originalTransactionId: ORIGINAL_ID, productId: MONTHLY_PRODUCT_ID, environment };
+  const status = t.mock.method(AppStoreServerAPIClient.prototype, 'getAllSubscriptionStatuses', async id => {
+    assert.equal(id, ORIGINAL_ID);
+    return response;
+  });
+  const decodeTransaction = t.mock.method(SignedDataVerifier.prototype, 'verifyAndDecodeTransaction', async jws => {
+    assert.equal(jws, 'selected-signed-transaction');
+    return transaction;
+  });
+  const decodeRenewal = t.mock.method(SignedDataVerifier.prototype, 'verifyAndDecodeRenewalInfo', async jws => {
+    assert.equal(jws, 'selected-signed-renewal');
+    return renewal;
+  });
+  return { status, decodeTransaction, decodeRenewal, transaction, renewal };
 }
 
 test('bundled Apple trust anchor is the pinned official G3 certificate', () => {
@@ -102,6 +134,99 @@ test('SDK verification rejects malformed JWS and self-signed attacker tokens', a
     await assert.rejects(() => verifyRealtime(jws, config));
     await assert.rejects(() => verifyNative({ signedTransactionInfo: jws, signedRenewalInfo: jws }, config));
     await assert.rejects(() => verifyNotification(jws, config));
+  }
+});
+
+test('server status accepts an omitted app ID only in Sandbox and rejects every supplied mismatch', async t => {
+  for (const [environment, appId, accepted] of [
+    ['Sandbox', undefined, true], ['Sandbox', config.appAppleId, true],
+    ['Sandbox', config.appAppleId + 1, false], ['Sandbox', String(config.appAppleId), false],
+    ['Sandbox', null, false],
+    ['Production', undefined, false], ['Production', config.appAppleId, true],
+    ['Production', config.appAppleId + 1, false], ['Production', String(config.appAppleId), false],
+    ['Production', null, false],
+  ]) {
+    await t.test(`${environment} appAppleId=${String(appId)} ${accepted ? 'accepted' : 'rejected'}`, async child => {
+      const response = statusFixture(environment);
+      if (appId === undefined) delete response.appAppleId;
+      else response.appAppleId = appId;
+      const sdk = mockStatusSDK(child, response, environment);
+      const operation = () => fetchSubscriptionStatus(ORIGINAL_ID, { ...config, environment }, env);
+      if (accepted) {
+        assert.deepEqual(await operation(), { transaction: sdk.transaction, renewal: sdk.renewal });
+        assert.equal(sdk.decodeTransaction.mock.callCount(), 1);
+        assert.equal(sdk.decodeRenewal.mock.callCount(), 1);
+      } else {
+        await assert.rejects(operation, /invalid_status_binding/);
+        assert.equal(sdk.decodeTransaction.mock.callCount(), 0);
+        assert.equal(sdk.decodeRenewal.mock.callCount(), 0);
+      }
+      assert.equal(sdk.status.mock.callCount(), 1);
+    });
+  }
+});
+
+test('server status still requires matching bundle and environment before decoding signed claims', async t => {
+  for (const [field, value] of [
+    ['bundleId', 'com.attacker.other'], ['bundleId', undefined],
+    ['environment', 'Production'], ['environment', undefined],
+  ]) {
+    await t.test(`${field}=${String(value)}`, async child => {
+      const response = statusFixture();
+      if (value === undefined) delete response[field];
+      else response[field] = value;
+      const sdk = mockStatusSDK(child, response);
+      await assert.rejects(() => fetchSubscriptionStatus(ORIGINAL_ID, config, env), /invalid_status_binding/);
+      assert.equal(sdk.decodeTransaction.mock.callCount(), 0);
+      assert.equal(sdk.decodeRenewal.mock.callCount(), 0);
+    });
+  }
+});
+
+test('server status decodes only the unique active subscription matching the requested original ID', async t => {
+  await t.test('ignores an unrelated subscription and decodes the selected signed pair', async child => {
+    const response = statusFixture();
+    response.data.unshift({ subscriptionGroupIdentifier: 'unrelated-group', lastTransactions: [{
+      originalTransactionId: '2999999999999999', status: 1,
+      signedTransactionInfo: 'unrelated-transaction', signedRenewalInfo: 'unrelated-renewal',
+    }] });
+    const sdk = mockStatusSDK(child, response);
+    assert.deepEqual(await fetchSubscriptionStatus(ORIGINAL_ID, config, env), {
+      transaction: sdk.transaction, renewal: sdk.renewal,
+    });
+    assert.equal(sdk.decodeTransaction.mock.callCount(), 1);
+    assert.equal(sdk.decodeRenewal.mock.callCount(), 1);
+  });
+  for (const [name, mutate] of [
+    ['missing lineage', response => { response.data[0].lastTransactions[0].originalTransactionId = '2999999999999999'; }],
+    ['duplicate lineage', response => { response.data.push(structuredClone(response.data[0])); }],
+    ['expired status', response => { response.data[0].lastTransactions[0].status = 2; }],
+    ['billing retry status', response => { response.data[0].lastTransactions[0].status = 3; }],
+    ['grace period status', response => { response.data[0].lastTransactions[0].status = 4; }],
+    ['revoked status', response => { response.data[0].lastTransactions[0].status = 5; }],
+    ['missing status', response => { delete response.data[0].lastTransactions[0].status; }],
+    ['string status', response => { response.data[0].lastTransactions[0].status = '1'; }],
+  ]) {
+    await t.test(name, async child => {
+      const response = statusFixture();
+      mutate(response);
+      const sdk = mockStatusSDK(child, response);
+      await assert.rejects(() => fetchSubscriptionStatus(ORIGINAL_ID, config, env), /no_active_subscription/);
+      assert.equal(sdk.decodeTransaction.mock.callCount(), 0);
+      assert.equal(sdk.decodeRenewal.mock.callCount(), 0);
+    });
+  }
+});
+
+test('a valid server status never bypasses either official signed-claim decoder', async t => {
+  for (const method of ['verifyAndDecodeTransaction', 'verifyAndDecodeRenewalInfo']) {
+    await t.test(`${method} rejects its proof`, async child => {
+      mockStatusSDK(child, statusFixture());
+      child.mock.method(SignedDataVerifier.prototype, method, async () => {
+        throw new Error('untrusted_signed_claim');
+      });
+      await assert.rejects(() => fetchSubscriptionStatus(ORIGINAL_ID, config, env), /untrusted_signed_claim/);
+    });
   }
 });
 
