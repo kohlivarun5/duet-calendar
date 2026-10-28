@@ -1,0 +1,15 @@
+.DS_Store
+__pycache__/
+*.pyc
+_site/
+**/node_modules/
+**/.wrangler/
+**/dist/
+**/.dev.vars
+**/.dev.vars.*
+**/.env
+**/.env.*
+!**/.env.example
+*.p8
+*.pem
+*.key
