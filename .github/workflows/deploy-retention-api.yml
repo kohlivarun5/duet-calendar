@@ -1,0 +1,54 @@
+name: Deploy retention API
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Cloudflare Worker environment
+        required: true
+        type: choice
+        default: sandbox
+        options:
+          - sandbox
+          - production
+
+permissions:
+  contents: read
+
+concurrency:
+  group: retention-api-${{ inputs.environment }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: retention-api-${{ inputs.environment }}
+    defaults:
+      run:
+        working-directory: workers/retention-api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: workers/retention-api/package-lock.json
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+      - run: npm run build
+      - run: npm run test:runtime
+      - name: Deploy selected Worker environment
+        env:
+          DEPLOY_ENVIRONMENT: ${{ inputs.environment }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "Configure CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID in repository or environment secrets."
+            exit 1
+          fi
+          case "$DEPLOY_ENVIRONMENT" in
+            sandbox|production) npm run "deploy:$DEPLOY_ENVIRONMENT" ;;
+            *) echo "Unsupported deployment environment."; exit 1 ;;
+          esac

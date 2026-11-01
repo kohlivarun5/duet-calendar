@@ -1,0 +1,25 @@
+{
+  "name": "duet-retention-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/index.mjs && node --check src/worker.mjs && node --check src/apple.mjs && node --check src/ledger.mjs && node --check src/policy.mjs && node --check scripts/apple-retention.mjs && node --check scripts/smoke-runtime.mjs",
+    "test:runtime": "node scripts/smoke-runtime.mjs",
+    "build": "wrangler deploy --dry-run --env sandbox --outdir dist",
+    "dev": "wrangler dev --env sandbox",
+    "deploy:sandbox": "wrangler deploy --env sandbox",
+    "deploy:production": "wrangler deploy --env production"
+  },
+  "dependencies": {
+    "@apple/app-store-server-library": "3.1.0"
+  },
+  "devDependencies": {
+    "miniflare": "5.20261023.1-beta",
+    "wrangler": "4.154.0"
+  }
+}

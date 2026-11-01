@@ -1,0 +1,11 @@
+{
+  "id": "shared-monthly-first-month-v1",
+  "enabled": false,
+  "offerIdentifier": "REPLACE_WITH_APPROVED_MONTHLY_PROMOTIONAL_OFFER_ID",
+  "targetProductId": "com.vkohli.zoeycalendar.shared.monthly",
+  "sourceProductIds": ["com.vkohli.zoeycalendar.shared.monthly", "com.vkohli.zoeycalendar.shared.yearly"],
+  "messageIdentifiers": { "en-US": "REPLACE_WITH_APPROVED_MESSAGE_UUID" },
+  "storefronts": ["USA"],
+  "startsAt": "2026-11-01T00:00:00Z",
+  "endsAt": "2026-12-01T00:00:00Z"
+}
