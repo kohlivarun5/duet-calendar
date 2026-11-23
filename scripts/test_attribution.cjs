@@ -48,6 +48,8 @@ const cases = [
     "duet_web_holiday_custody_schedule_202607",
     holiday,
   ],
+  ["school-break-custody-schedule", "", "duet_web_break_202611", holiday],
+  ["school-break-custody-schedule", "?gclid=test", "duet_google_search_202607", holiday],
   ["home", "?gclid=test", "duet_google_search_202607", paid],
   [
     "home",
